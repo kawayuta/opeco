@@ -1,0 +1,37 @@
+<%= form_with(model: calendar, local: true) do |form| %>
+  <% if calendar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
+
+      <ul>
+      <% calendar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sex_type %>
+    <%= form.select :sex_type, Calendar.sex_types_i18n.invert, prompt: "避妊ありなし" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feel_type %>
+    <%= form.select :feel_type, Calendar.feel_types_i18n.invert, prompt: "気分" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :condition_type %>
+    <%= form.select :condition_type, Calendar.condition_types_i18n.invert, prompt: "量" %>
+  </div>
+
+    <div class="field">
+      <%= form.label :condition_type %>
+      <%= form.hidden_field :ymd %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

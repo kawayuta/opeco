@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @calendar.user %>
+</p>
+
+<p>
+  <strong>Sex type:</strong>
+  <%= @calendar.sex_type %>
+</p>
+
+<p>
+  <strong>Feel type:</strong>
+  <%= @calendar.feel_type %>
+</p>
+
+<p>
+  <strong>Condition type:</strong>
+  <%= @calendar.condition_type %>
+</p>
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>

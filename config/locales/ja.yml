@@ -1,0 +1,19 @@
+ja:
+  enums:
+    calendar:
+      sex_type:
+        contraception: 避妊
+        to_go_out: 外出し
+        to_go_in: 中出し
+      feel_type:
+        fine: 最高
+        like: 良好
+        soso: まぁまぁ
+        bad: 最悪
+      condition_type:
+        very_lot: 大量
+        lot: 多い
+        few: 少し
+        very_few: ほぼ無い
+
+

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  possibility: 1
+  ovulation: 
+  menses: 
+
+two:
+  possibility: 1
+  ovulation: 
+  menses: 

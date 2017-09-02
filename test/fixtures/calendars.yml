@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  sex_type: 1
+  feel_type: 1
+  condition_type: MyString
+
+two:
+  user: two
+  sex_type: 1
+  feel_type: 1
+  condition_type: MyString

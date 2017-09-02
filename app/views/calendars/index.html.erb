@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<%   require 'date' %>
+<h1>生理Calendars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Sex type</th>
+      <th>Feel type</th>
+      <th>Condition type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% for day in 1..@month do %>
+      <tr>
+        <% if @data = Calendar.find_by("DATE(ymd) = '2017-09-0#{day}'") %>
+            <td><%= day %>日</td>
+            <td><%= @data.ymd %></td>
+            <td><%= @data.sex_type %></td>
+            <td><%= @data.feel_type %></td>
+            <td><%= @data.condition_type %></td>
+
+            <td><%= link_to '登録', new_calendar_path(ymd: "2017-09-#{day}") %></td>
+        <% else %>
+            <td><%= day %>日</td>
+            <td><%= link_to '登録', new_calendar_path(ymd: "2017-09-#{day}") %></td>
+
+      <% end %>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

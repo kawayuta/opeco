@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Possibility:</strong>
+  <%= @status.possibility %>
+</p>
+
+<p>
+  <strong>Ovulation:</strong>
+  <%= @status.ovulation %>
+</p>
+
+<p>
+  <strong>Menses:</strong>
+  <%= @status.menses %>
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>
