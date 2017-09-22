@@ -29,6 +29,7 @@ class CalendarsController < ApplicationController
     @month = @now.end_of_month.strftime("%d").to_i
     end
     @calendars = Calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
+    @calendar = current_user.calendar.new(calendar_params_new)
 
 
   end

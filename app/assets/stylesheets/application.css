@@ -62,10 +62,47 @@ table {
     border-spacing: 0;
 }
 
+#sidebar {
+    width:150px;
+    height:100vh;
+    background-color: #BBBBBB;
+    border-right:1px solid #730E15;
+    float:left;
+}
+
+.today_page {
+    width:400px;
+    height:100vh;
+    background-color: #EEE;
+
+    float:left;
+}
+.calendars ul {
+    width : -webkit-calc(100% - 555px) ;
+    width : calc(100% - 555px) ;
+    display: flex;
+    align-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 15px;
+    margin-top: 15px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #FFF;
+}
 .calendars ul li {
-    border:1px solid #DDD;
+    position: relative;
+    height:155px;
+    background-color: #FFF;
+    border-radius:3px;
     float:left;
     list-style: none;
-    width:100px;
-    height:80px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    z-index:2;
+    overflow: hidden;
+    border-bottom: 1px solid #EEEEFF;
+    width : -webkit-calc((100% / 7) - 15px) ;
+    width : calc((100% / 7) - 15px) ;
+    flex-grow: 1;
 }

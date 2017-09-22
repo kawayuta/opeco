@@ -6,7 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/calendars_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/calendars_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendars/index.html.erb" afterPath="$PROJECT_DIR$/app/views/calendars/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -77,8 +76,8 @@
           <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/calendars/index.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -131,28 +130,18 @@
           <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/calendars/new.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                <state relative-caret-position="17">
+                  <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_calendar.json.jbuilder" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/calendars/_calendar.json.jbuilder">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="calendars_controller.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="calendars_controller.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/calendars_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="28" />
+                <state relative-caret-position="493">
+                  <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -168,11 +157,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="application.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="application.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1122">
-                  <caret line="66" column="15" lean-forward="false" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
+                <state relative-caret-position="1060">
+                  <caret line="81" column="26" lean-forward="false" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="application.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../igidai/app/assets/stylesheets/application.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="879">
+                  <caret line="365" column="45" lean-forward="true" selection-start-line="351" selection-start-column="3" selection-end-line="365" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -181,8 +180,8 @@
           <file leaf-file-name="scaffolds.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="561">
+                  <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -232,6 +231,12 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>flex</find>
+      <find>#{</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -252,9 +257,10 @@
         <option value="$PROJECT_DIR$/db/migrate/20170902175519_create_calendars.rb" />
         <option value="$PROJECT_DIR$/app/views/calendars/_form.html.erb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
         <option value="$PROJECT_DIR$/app/controllers/calendars_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/views/calendars/index.html.erb" />
       </list>
     </option>
@@ -973,12 +979,12 @@
       <option name="presentableId" value="Default" />
       <updated>1504373114273</updated>
       <workItem from="1504373115494" duration="17635000" />
-      <workItem from="1506065859358" duration="7090000" />
+      <workItem from="1506065859358" duration="10051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24725000" />
+    <option name="totallyTimeSpent" value="27686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1596" extended-state="6" />
@@ -1015,14 +1021,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/cable.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environment.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1287,14 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/calendars/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/calendars/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1351,14 +1341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/calendars.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1375,14 +1357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="15" lean-forward="false" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1391,18 +1365,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../igidai/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="879">
+          <caret line="365" column="45" lean-forward="true" selection-start-line="351" selection-start-column="3" selection-end-line="365" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/calendars/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/calendars_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="28" />
+        <state relative-caret-position="493">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="81" column="26" lean-forward="false" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/calendars/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+        <state relative-caret-position="170">
+          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding />
         </state>
       </provider>
