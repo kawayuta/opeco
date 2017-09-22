@@ -2,14 +2,35 @@ class CalendarsController < ApplicationController
   require 'date'
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
   before_action :today_check, only: [:new]
+  before_action :set_calendar_ym, only: [:index]
   before_action :authenticate_user!
 
   # GET /calendars
   # GET /calendars.json
   def index
-    now = Time.current
-    @month = now.end_of_month.strftime("%d").to_i
-    @calendars = Calendar.where(created_at: now.beginning_of_month..now.end_of_month, user_id: current_user.id)
+    @now = Time.current
+    @set_calendar_ym = (set_calendar_ym)
+
+    if @set_calendar_ym[:month] == "0"
+      @show_month = (@set_calendar_ym[:month] = "12")
+      @show_year = (@set_calendar_ym[:year].to_i - 1)
+    elsif @set_calendar_ym[:month] == "13"
+      @show_month = (@set_calendar_ym[:month] = "1")
+      @show_year = (@set_calendar_ym[:year].to_i + 1)
+    else
+      @show_month = @set_calendar_ym[:month]
+      @show_year = @set_calendar_ym[:year]
+    end
+
+    @ymd = "01/#{@show_month}/#{@show_year}"
+    if @set_calendar_ym.present?
+    @month = @ymd.to_time.end_of_month.strftime("%d").to_i
+    else
+    @month = @now.end_of_month.strftime("%d").to_i
+    end
+    @calendars = Calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
+
+
   end
 
   # GET /calendars/1
@@ -89,4 +110,10 @@ class CalendarsController < ApplicationController
       redirect_to edit_calendar_url(@today)
     end
   end
+
+  def set_calendar_ym
+    params.permit(:year,:month)
+  end
+
+
 end

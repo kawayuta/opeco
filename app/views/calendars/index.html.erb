@@ -1,40 +1,34 @@
 <p id="notice"><%= notice %></p>
 <%   require 'date' %>
 <h1>生理Calendars</h1>
+<%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month)? @show_month:@now.strftime("%m") %>月
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Sex type</th>
-      <th>Feel type</th>
-      <th>Condition type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="calendars">
+  <%= link_to '<<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i - 1 : @now.strftime("%Y").to_i - 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
+  <%= link_to '<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i - 1 : @now.strftime("%m").to_i - 1%>
+  <%= link_to '>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i + 1 : @now.strftime("%m").to_i + 1%>
+  <%= link_to '>>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i + 1 : @now.strftime("%Y").to_i + 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
 
-  <tbody>
+  <ul>
+  <% @show_date = (@set_calendar_ym.present?) ? "#{@show_year}-0#{@show_month}" : @now.strftime("%Y-%m")%>
 
   <% for day in 1..@month do %>
-      <tr>
-        <% if @data = Calendar.find_by("DATE(ymd) = '2017-09-0#{day}'") %>
-            <td><%= day %>日</td>
-            <td><%= @data.ymd %></td>
-            <td><%= @data.sex_type %></td>
-            <td><%= @data.feel_type %></td>
-            <td><%= @data.condition_type %></td>
+      <li>
+        <% if @data = Calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'") %>
+            <div><%= day %>日</div>
+            <div><%= @data.ymd.strftime("%Y-%m-%d") %></div>
+            <div><%= @data.sex_type %></div>
+            <div><%= @data.feel_type %></div>
+            <div><%= @data.condition_type %></div>
 
-            <td><%= link_to '登録', new_calendar_path(ymd: "2017-09-#{day}") %></td>
+            <div><%= link_to '登録', new_calendar_path(ymd: "#{@show_date}-#{day}") %></div>
         <% else %>
-            <td><%= day %>日</td>
-            <td><%= link_to '登録', new_calendar_path(ymd: "2017-09-#{day}") %></td>
+            <div><%= day %>日</div>
+            <div><%= link_to '登録', new_calendar_path(ymd: "#{@show_date}-#{day}") %></div>
 
       <% end %>
-      </tr>
+      </li>
 
   <% end %>
-  </tbody>
-</table>
-
-<br>
-
+</ul>
+</div>
