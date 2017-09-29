@@ -11,5 +11,65 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+
+
+    $('#sex_check').change(function(){
+        if ($(this).is(':checked')) {
+            $('#sex-result').slideDown(200);
+            $('.sex_check_label').css({
+                'background-color': '#FC7BA2'
+        });
+        } else {
+            $('#sex-result').slideUp(200);
+            $('.sex_check_label').css({
+                'background-color': '#FFF',
+            });
+
+        }
+    });
+
+    $('#seiri_check').change(function(){
+        if ($(this).is(':checked')) {
+            $('#seiri-result').slideDown(200);
+            $('.seiri_check_label').css({
+                'background-color': '#F26574',
+            });
+
+        } else {
+            $('#seiri-result').slideUp(200);
+            $('.seiri_check_label').css({
+                'background-color': '#FFF',
+            });
+
+        }
+    });
+
+
+    $('.feel_type').on('click', function() {
+        if ($(this).prop('checked')){
+            $('.feel_type').prop('checked', false);
+            $(this).prop('checked', true);
+        }
+    });
+
+    $('.condition_type').on('click', function() {
+        if ($(this).prop('checked')){
+            $('.condition_type').prop('checked', false);
+            $(this).prop('checked', true);
+        }
+    });
+
+    $('.sex_type').on('click', function() {
+        if ($(this).prop('checked')){
+            $('.sex_type').prop('checked', false);
+            $(this).prop('checked', true);
+        }
+    });
+
+});

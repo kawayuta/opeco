@@ -13,32 +13,73 @@
   <%= render 'form', calendar: @calendar %>
 </div>
 <div class="calendars">
-  <h1>生理Calendars</h1>
   <%= link_to '<<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i - 1 : @now.strftime("%Y").to_i - 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
   <%= link_to '<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i - 1 : @now.strftime("%m").to_i - 1%>
-  <%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month)? @show_month:@now.strftime("%m") %>月
+  <%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month) ? @show_month:@now.strftime("%m") %>月
   <%= link_to '>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i + 1 : @now.strftime("%m").to_i + 1%>
   <%= link_to '>>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i + 1 : @now.strftime("%Y").to_i + 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
 
   <ul>
   <% @show_date = (@set_calendar_ym.present?) ? "#{@show_year}-0#{@show_month}" : @now.strftime("%Y-%m")%>
+    <li class="week sun">日</li>
+    <li class="week mon">月</li>
+    <li class="week tue">火</li>
+    <li class="week wed">水</li>
+    <li class="week thu">木</li>
+    <li class="week fri">金</li>
+    <li class="week sat">土</li>
 
   <% for day in 1..@month do %>
-      <li>
+        <% if day == 1 %>
+            <% week = "#{day}/#{(@show_month) ? @show_month:@now.strftime("%m")}/#{(@show_year) ? @show_year : @now.strftime("%Y")}".to_time%>
+            <% w = week.strftime("#{%w(日 月 火 水 木 金 土)[week.wday]}") %>
+            <% if w == "月" %>
+                <li class="card empty"></li>
+            <% elsif w == "火" %>
+                <li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "水" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "木" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "金" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "土" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% end %>
+        <% end %>
+      <li class="card">
         <% if @data = Calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'") %>
-            <div><%= day %>日</div>
-            <div><%= @data.ymd.strftime("%Y-%m-%d") %></div>
-            <div><%= @data.sex_type %></div>
-            <div><%= @data.feel_type %></div>
-            <div><%= @data.condition_type %></div>
+            <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
+              <div><%= day %>日</div>
+              <div><%= @data.sex_type %></div>
+              <div><%= @data.feel_type %></div>
+              <div><%= @data.condition_type %></div>
+            <% end %>
 
-            <div><%= link_to '登録', new_calendar_path(ymd: "#{@show_date}-#{day}") %></div>
         <% else %>
-            <div><%= day %>日</div>
-            <div><%= link_to '登録', new_calendar_path(ymd: "#{@show_date}-#{day}") %></div>
+            <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
+              <div><%= day %>日</div>
+            <% end %>
 
-      <% end %>
+        <% end %>
       </li>
+        <% if day == @month %>
+            <% week = "#{day}/#{(@show_month) ? @show_month:@now.strftime("%m")}/#{(@show_year) ? @show_year : @now.strftime("%Y")}".to_time%>
+            <% w = week.strftime("#{%w(日 月 火 水 木 金 土)[week.wday]}") %>
+            <% if w == "日" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "月" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "火" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "水" %>
+                <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "木" %>
+                <li class="card empty"></li><li class="card empty"></li>
+            <% elsif w == "金" %>
+                <li class="card"></li>
+            <% end %>
+        <% end %>
 
   <% end %>
 </ul>

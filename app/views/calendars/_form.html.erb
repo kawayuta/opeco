@@ -11,20 +11,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :sex_type %>
-    <%= form.select :sex_type, Calendar.sex_types_i18n.invert, prompt: "避妊ありなし" %>
-  </div>
 
-  <div class="field">
-    <%= form.label :feel_type %>
-    <%= form.select :feel_type, Calendar.feel_types_i18n.invert, prompt: "気分" %>
-  </div>
+    <div class="feel-field">
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="fine">最高
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="like">良好
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="soso">普通
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="bad">最悪
+    </div>
 
-  <div class="field">
-    <%= form.label :condition_type %>
-    <%= form.select :condition_type, Calendar.condition_types_i18n.invert, prompt: "量" %>
-  </div>
+    <ul id="today_status_check" class="clearfix">
+      <li>
+        <input type="checkbox" id="seiri_check" value="1">
+        <label for="seiri_check" class="seiri_check_label">生理</label>
+      </li>
+
+      <li>
+        <input type="checkbox" id="sex_check" value="1">
+        <label for="sex_check" class="sex_check_label">SEX</label>
+      </li>
+    </ul>
+
+
+    <div id="seiri-result" style="display: none">
+
+      <div class="condition-field">
+        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="very_lot">多量
+        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="lot">普通
+        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="few">少量
+        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="bad">ほぼない
+      </div>
+
+    </div>
+
+    <div id="sex-result" style="display: none">
+
+      <div class="sex_type-field">
+        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="contraception">避妊
+        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="to_go_out">避妊なし(外出)
+        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="to_go_in">避妊なし(中出)
+      </div>
+
+
+    </div>
+
+
+
 
     <div class="field">
       <%= form.label :condition_type %>

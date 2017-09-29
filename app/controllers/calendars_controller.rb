@@ -12,21 +12,24 @@ class CalendarsController < ApplicationController
     @set_calendar_ym = (set_calendar_ym)
 
     if @set_calendar_ym[:month] == "0"
-      @show_month = (@set_calendar_ym[:month] = "12")
-      @show_year = (@set_calendar_ym[:year].to_i - 1)
+      @show_month = (@set_calendar_ym[:month] = "12").to_i.abs
+      @show_year = (@set_calendar_ym[:year].to_i - 1).abs
+    elsif (1..12).include?(@set_calendar_ym[:month].to_i)
+      @show_month = @set_calendar_ym[:month].to_i.abs
+      @show_year = @set_calendar_ym[:year].to_i.abs
     elsif @set_calendar_ym[:month] == "13"
-      @show_month = (@set_calendar_ym[:month] = "1")
-      @show_year = (@set_calendar_ym[:year].to_i + 1)
+      @show_month = (@set_calendar_ym[:month] = "1").to_i.abs
+      @show_year = (@set_calendar_ym[:year].to_i + 1).abs
     else
-      @show_month = @set_calendar_ym[:month]
-      @show_year = @set_calendar_ym[:year]
+      @show_month = @now.end_of_month.strftime("%m").to_i.abs
+      @show_year = @now.end_of_month.strftime("%Y").to_i.abs
     end
 
-    @ymd = "01/#{@show_month}/#{@show_year}"
+    @ymd = "01/#{@show_month.to_i}/#{@show_year}"
     if @set_calendar_ym.present?
-    @month = @ymd.to_time.end_of_month.strftime("%d").to_i
+    @month = @ymd.to_time.end_of_month.strftime("%d").to_i.abs
     else
-    @month = @now.end_of_month.strftime("%d").to_i
+    @month = @now.end_of_month.strftime("%d").to_i.abs
     end
     @calendars = Calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
     @calendar = current_user.calendar.new(calendar_params_new)

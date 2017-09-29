@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
 gem 'carrierwave', '~> 1.0'
 gem 'enum_help'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
