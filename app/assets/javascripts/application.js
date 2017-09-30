@@ -30,7 +30,6 @@ $(document).on('turbolinks:load', function() {
             $('.sex_check_label').css({
                 'background-color': '#FFF',
             });
-
         }
     });
 
@@ -49,6 +48,71 @@ $(document).on('turbolinks:load', function() {
 
         }
     });
+
+    $('#feel_type_fine').change(function(){
+        if ($(this).is(':checked')) {
+            $('.feel_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.feel_type_fine').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.feel_type_fine').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+
+    $('#feel_type_like').change(function(){
+        if ($(this).is(':checked')) {
+            $('.feel_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.feel_type_like').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.feel_type_like').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+
+    $('#feel_type_soso').change(function(){
+        if ($(this).is(':checked')) {
+            $('.feel_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.feel_type_soso').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.feel_type_soso').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+
+    $('#feel_type_bad').change(function(){
+        if ($(this).is(':checked')) {
+            $('.feel_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.feel_type_bad').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.feel_type_bad').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+
 
 
     $('.feel_type').on('click', function() {
@@ -71,5 +135,14 @@ $(document).on('turbolinks:load', function() {
             $(this).prop('checked', true);
         }
     });
+
+
+    $('.sex_type').on('click', function() {
+        if ($(this).prop('checked')){
+            $('.sex_type').prop('checked', false);
+            $(this).prop('checked', true);
+        }
+    });
+
 
 });

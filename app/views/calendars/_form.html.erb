@@ -11,13 +11,28 @@
     </div>
   <% end %>
 
+    <ul class="feel-field">
+      <li>
+        <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_fine" value="fine">
+        <label for="feel_type_fine" class="feel_type_fine feel_type_label">最高！</label>
+      </li>
 
-    <div class="feel-field">
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="fine">最高
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="like">良好
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="soso">普通
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" value="bad">最悪
-    </div>
+      <li>
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_like" value="like">
+      <label for="feel_type_like" class="feel_type_like feel_type_label">ハッピー</label>
+      </li>
+
+      <li>
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_soso" value="soso">
+      <label for="feel_type_soso" class="feel_type_soso feel_type_label">まぁまぁ</label>
+      </li>
+
+      <li>
+      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_bad" value="bad">
+      <label for="feel_type_bad" class="feel_type_bad feel_type_label">イライラ</label>
+      </li>
+
+    </ul>
 
     <ul id="today_status_check" class="clearfix">
       <li>

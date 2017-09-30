@@ -192,3 +192,54 @@ table {
     overflow: hidden;
 }
 
+.feel-field {
+
+}
+
+
+.feel-field li {
+    width:80px;
+    height:80px;
+    float: left;
+    margin-left:13.5px;
+    margin-bottom:13.5px;
+    padding:0;
+}
+.feel-field li input[type=checkbox] {
+    width:80px;
+    height:80px;
+    opacity: 0.5;
+}
+
+.feel-field li label {
+    position: relative;
+    top:-80px;
+}
+
+.feel_type_fine {
+    width:80px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.feel_type_like {
+    width:80px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.feel_type_soso {
+    width:80px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.feel_type_bad {
+    width:80px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
