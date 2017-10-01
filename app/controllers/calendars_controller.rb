@@ -54,17 +54,31 @@ class CalendarsController < ApplicationController
   # POST /calendars
   # POST /calendars.json
   def create
-    @calendar = current_user.calendar.new(calendar_params)
 
-    respond_to do |format|
-      if @calendar.save
-        format.html { redirect_to @calendar, notice: 'Calendar was successfully created.' }
-        format.json { render :show, status: :created, location: @calendar }
-      else
-        format.html { render :new }
-        format.json { render json: @calendar.errors, status: :unprocessable_entity }
+    if current_user.calendar.find_by(created_at: @now).present? == false
+      @calendar = current_user.calendar.find_by(created_at: @now)
+      respond_to do |format|
+        if @calendar.update(calendar_params)
+          format.html { redirect_to @calendar, notice: 'Calendar was successfully updated.' }
+          format.json { render :show, status: :ok, location: @calendar }
+        else
+          format.html { render :edit }
+          format.json { render json: @calendar.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @calendar = current_user.calendar.new(calendar_params)
+      respond_to do |format|
+        if @calendar.save
+          format.html { redirect_to calendars_path, notice: '今日のデータを更新しました。' }
+          format.json { render :show, status: :created, location: @calendar }
+        else
+          format.html { render :new }
+          format.json { render json: @calendar.errors, status: :unprocessable_entity }
+        end
       end
     end
+
   end
 
   # PATCH/PUT /calendars/1

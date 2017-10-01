@@ -35,13 +35,11 @@ $(document).on('turbolinks:load', function() {
 
     $('#seiri_check').change(function(){
         if ($(this).is(':checked')) {
-            $('#seiri-result').slideDown(200);
             $('.seiri_check_label').css({
                 'background-color': '#F26574',
             });
 
         } else {
-            $('#seiri-result').slideUp(200);
             $('.seiri_check_label').css({
                 'background-color': '#FFF',
             });
@@ -119,6 +117,7 @@ $(document).on('turbolinks:load', function() {
         if ($(this).prop('checked')){
             $('.feel_type').prop('checked', false);
             $(this).prop('checked', true);
+            $('#today_data').submit();
         }
     });
 

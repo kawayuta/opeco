@@ -1,4 +1,4 @@
-<%= form_with(model: calendar, local: true) do |form| %>
+<%= form_with(model: calendar, local: true, id: "today_data") do |form| %>
   <% if calendar.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
@@ -36,7 +36,7 @@
 
     <ul id="today_status_check" class="clearfix">
       <li>
-        <input type="checkbox" id="seiri_check" value="1">
+        <%= form.check_box :condition_type, id:"seiri_check" %>
         <label for="seiri_check" class="seiri_check_label">生理</label>
       </li>
 
@@ -45,18 +45,6 @@
         <label for="sex_check" class="sex_check_label">SEX</label>
       </li>
     </ul>
-
-
-    <div id="seiri-result" style="display: none">
-
-      <div class="condition-field">
-        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="very_lot">多量
-        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="lot">普通
-        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="few">少量
-        <input type="checkbox" name="calendar[condition_type]" class="condition_type" value="bad">ほぼない
-      </div>
-
-    </div>
 
     <div id="sex-result" style="display: none">
 
@@ -68,9 +56,6 @@
 
 
     </div>
-
-
-
 
     <div class="field">
       <%= form.label :condition_type %>
