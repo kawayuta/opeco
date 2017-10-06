@@ -56,16 +56,8 @@ class CalendarsController < ApplicationController
   def create
 
     if current_user.calendar.find_by(created_at: @now).present? == false
-      @calendar = current_user.calendar.find_by(created_at: @now)
-      respond_to do |format|
-        if @calendar.update(calendar_params)
-          format.html { redirect_to @calendar, notice: 'Calendar was successfully updated.' }
-          format.json { render :show, status: :ok, location: @calendar }
-        else
-          format.html { render :edit }
-          format.json { render json: @calendar.errors, status: :unprocessable_entity }
-        end
-      end
+      @calendar = current_user.calendar.last
+      @calendar.update(calendar_params)
     else
       @calendar = current_user.calendar.new(calendar_params)
       respond_to do |format|
