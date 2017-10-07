@@ -32,7 +32,12 @@ class CalendarsController < ApplicationController
     @month = @now.end_of_month.strftime("%d").to_i.abs
     end
     @calendars = Calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
-    @calendar = current_user.calendar.new(calendar_params_new)
+
+    if current_user.calendar.find_by("DATE(created_at) = '#{@now.to_time.strftime('%Y-%m-%d')}'").present? == true
+      @calendar = current_user.calendar.find_by("DATE(created_at) = '#{@now.to_time.strftime('%Y-%m-%d')}'")
+    else
+      @calendar = current_user.calendar.new(calendar_params_new)
+    end
 
 
   end
@@ -54,10 +59,18 @@ class CalendarsController < ApplicationController
   # POST /calendars
   # POST /calendars.json
   def create
-
-    if current_user.calendar.find_by(created_at: @now).present? == false
-      @calendar = current_user.calendar.last
-      @calendar.update(calendar_params)
+    @now = Time.current
+    if current_user.calendar.find_by("DATE(created_at) = '#{@now.to_time.strftime('%Y-%m-%d')}'").present? == true
+      @calendar = current_user.calendar.all.find_by("DATE(created_at) = '#{@now.to_time.strftime('%Y-%m-%d')}'")
+      respond_to do |format|
+        if @calendar.update(calendar_params)
+          format.html { redirect_to calendars_path, notice: '今日のデータを更新しました。' }
+          format.json { render :show, status: :ok, location: @calendar }
+        else
+          format.html { render :edit }
+          format.json { render json: @calendar.errors, status: :unprocessable_entity }
+        end
+      end
     else
       @calendar = current_user.calendar.new(calendar_params)
       respond_to do |format|

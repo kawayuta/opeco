@@ -33,8 +33,7 @@ $(document).on('turbolinks:load', function() {
         }
     });
 
-    $('#seiri_check').change(function(){
-        if ($(this).is(':checked')) {
+    $('#seiri_check').change(function(){ 
             $('.seiri_check_label').css({
                 'background-color': '#F26574',
             });
@@ -45,6 +44,7 @@ $(document).on('turbolinks:load', function() {
             });
 
         }
+        $('#today_data').submit();
     });
 
     $('#feel_type_fine').change(function(){
