@@ -30,21 +30,21 @@ $(document).on('turbolinks:load', function() {
             $('.sex_check_label').css({
                 'background-color': '#FFF',
             });
+
+            $('.sex_type').prop('checked', false);
         }
     });
 
-    $('#seiri_check').change(function(){ 
+    $('#seiri_check').change(function(){
+        if ($(this).is(':checked')) {
             $('.seiri_check_label').css({
                 'background-color': '#F26574',
             });
-
         } else {
             $('.seiri_check_label').css({
                 'background-color': '#FFF',
             });
-
         }
-        $('#today_data').submit();
     });
 
     $('#feel_type_fine').change(function(){
@@ -117,7 +117,6 @@ $(document).on('turbolinks:load', function() {
         if ($(this).prop('checked')){
             $('.feel_type').prop('checked', false);
             $(this).prop('checked', true);
-            $('#today_data').submit();
         }
     });
 
@@ -127,14 +126,6 @@ $(document).on('turbolinks:load', function() {
             $(this).prop('checked', true);
         }
     });
-
-    $('.sex_type').on('click', function() {
-        if ($(this).prop('checked')){
-            $('.sex_type').prop('checked', false);
-            $(this).prop('checked', true);
-        }
-    });
-
 
     $('.sex_type').on('click', function() {
         if ($(this).prop('checked')){

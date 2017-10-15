@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
  <nav id="sidebar">
   <ul>
     <li>TOP</li>
@@ -7,17 +5,16 @@
 </nav>
 
 <div class="today_page">
-  妊娠確率〜
-  状況STATUS〜
-  今日の~
   <%= render 'form', calendar: @calendar %>
 </div>
 <div class="calendars">
+
   <%= link_to '<<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i - 1 : @now.strftime("%Y").to_i - 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
   <%= link_to '<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i - 1 : @now.strftime("%m").to_i - 1%>
   <%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month) ? @show_month:@now.strftime("%m") %>月
   <%= link_to '>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i + 1 : @now.strftime("%m").to_i + 1%>
   <%= link_to '>>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i + 1 : @now.strftime("%Y").to_i + 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
+
 
   <ul>
   <% @show_date = (@set_calendar_ym.present?) ? "#{@show_year}-0#{@show_month}" : @now.strftime("%Y-%m")%>
@@ -49,7 +46,7 @@
         <% end %>
       <li class="card">
         <% if @data = Calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'") %>
-            <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
+            <%= link_to edit_calendar_path(id: @data.id ) do %>
               <div><%= day %>日</div>
               <div><%= @data.sex_type %></div>
               <div><%= @data.feel_type %></div>
