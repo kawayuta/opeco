@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f511fec-5a66-4e3f-885e-ebd70e9337d7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/calendars_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/calendars_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/calendar.rb" afterPath="$PROJECT_DIR$/app/models/calendar.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendars/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/calendars/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendars/index.html.erb" afterPath="$PROJECT_DIR$/app/views/calendars/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20170902175519_create_calendars.rb" afterPath="$PROJECT_DIR$/db/migrate/20170902175519_create_calendars.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -42,8 +33,8 @@
           <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/calendars/index.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="598">
-                  <caret line="41" column="58" lean-forward="false" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+                <state relative-caret-position="1159">
+                  <caret line="74" column="72" lean-forward="true" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
                   <folding />
                 </state>
               </provider>
@@ -136,8 +127,8 @@
           <file leaf-file-name="calendar.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/calendar.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                <state relative-caret-position="85">
+                  <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
                   <folding />
                 </state>
               </provider>
@@ -241,9 +232,9 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/calendars/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/calendar.rb" />
         <option value="$PROJECT_DIR$/app/controllers/calendars_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/calendars/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/calendar.rb" />
       </list>
     </option>
   </component>
@@ -991,12 +982,12 @@
       <workItem from="1506952728045" duration="4425000" />
       <workItem from="1507366336759" duration="1007000" />
       <workItem from="1507621778477" duration="3887000" />
-      <workItem from="1508082841487" duration="2814000" />
+      <workItem from="1508082841487" duration="3213000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66805000" />
+    <option name="totallyTimeSpent" value="67204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-28" y="212" width="2560" height="1440" extended-state="0" />
@@ -1369,14 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/calendar.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/calendars/show.json.jbuilder">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1403,8 +1386,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/calendars/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="41" column="58" lean-forward="false" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+        <state relative-caret-position="1159">
+          <caret line="74" column="72" lean-forward="true" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/calendar.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
           <folding />
         </state>
       </provider>
