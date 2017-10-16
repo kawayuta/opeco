@@ -17,7 +17,7 @@
 
 
   <ul>
-  <% @show_date = (@set_calendar_ym.present?) ? "#{@show_year}-0#{@show_month}" : @now.strftime("%Y-%m")%>
+  <% @show_date = (@set_calendar_ym.present?) ? "#{@show_year}-#{@show_month}" : @now.strftime("%Y-%m")%>
     <li class="week sun">日</li>
     <li class="week mon">月</li>
     <li class="week tue">火</li>
@@ -51,11 +51,24 @@
               <div><%= @data.sex_type %></div>
               <div><%= @data.feel_type %></div>
               <div><%= @data.condition_type %></div>
-            <% end %>
+                <% if @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    生理予定日
+                <% end %>
+                <% if @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    排卵予定日
+                <% end %>
+      <% end %>
 
         <% else %>
             <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
+
               <div><%= day %>日</div>
+                <% if @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    生理予定日
+                <% end %>
+                <% if @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    排卵予定日
+                <% end %>
             <% end %>
 
         <% end %>
@@ -80,6 +93,9 @@
 
   <% end %>
 </ul>
+
+  次の生理予定日は<%= @next_seiri %>です<br />
+  次の排卵日は<%= @next_hairan %>です
 </div>
 
 
