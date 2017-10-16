@@ -127,8 +127,8 @@
           <file leaf-file-name="calendar.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/calendar.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+                <state relative-caret-position="17">
+                  <caret line="1" column="2" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
                   <folding />
                 </state>
               </provider>
@@ -982,12 +982,12 @@
       <workItem from="1506952728045" duration="4425000" />
       <workItem from="1507366336759" duration="1007000" />
       <workItem from="1507621778477" duration="3887000" />
-      <workItem from="1508082841487" duration="3213000" />
+      <workItem from="1508082841487" duration="3687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67204000" />
+    <option name="totallyTimeSpent" value="67678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-28" y="212" width="2560" height="1440" extended-state="0" />
@@ -1394,8 +1394,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/calendar.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        <state relative-caret-position="17">
+          <caret line="1" column="2" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
           <folding />
         </state>
       </provider>
