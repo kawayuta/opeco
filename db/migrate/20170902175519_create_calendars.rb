@@ -6,7 +6,6 @@ class CreateCalendars < ActiveRecord::Migration[5.1]
       t.integer :feel_type
       t.integer :condition_type
       t.timestamp :ymd
-
       t.timestamps
     end
   end
