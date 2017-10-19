@@ -51,10 +51,10 @@
               <div><%= @data.sex_type %></div>
               <div><%= @data.feel_type %></div>
               <div><%= @data.condition_type %></div>
-                <% if @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                <% if @next_seiri.present? == true && @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     生理予定日
                 <% end %>
-                <% if @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                <% if @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
 
@@ -64,10 +64,10 @@
             <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
 
               <div><%= day %>日</div>
-                <% if @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                <% if @next_seiri.present? == true && @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     生理予定日
                 <% end %>
-                <% if @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                <% if @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
             <% end %>

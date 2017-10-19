@@ -30,7 +30,6 @@ $(document).on('turbolinks:load', function() {
             $('.sex_check_label').css({
                 'background-color': '#FFF',
             });
-
             $('.sex_type').prop('checked', false);
         }
     });
@@ -42,21 +41,6 @@ $(document).on('turbolinks:load', function() {
             });
         } else {
             $('.seiri_check_label').css({
-                'background-color': '#FFF',
-            });
-        }
-    });
-
-    $('#feel_type_fine').change(function(){
-        if ($(this).is(':checked')) {
-            $('.feel_type_label').css({
-                'background-color': '#FFF',
-            });
-            $('.feel_type_fine').css({
-                'background-color': '#FC7BA2'
-            });
-        } else {
-            $('.feel_type_fine').css({
                 'background-color': '#FFF',
             });
         }
@@ -112,6 +96,60 @@ $(document).on('turbolinks:load', function() {
 
 
 
+    $('#sex_type_ari').change(function(){
+        if ($(this).is(':checked')) {
+            $('.sex_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.sex_type_check ').css({
+                'background-color': '#FC7BA2'
+            });
+            $('.sex_type_ari').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.sex_type_ari').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+
+    $('#sex_type_nasi_soto').change(function(){
+        if ($(this).is(':checked')) {
+            $('.sex_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.sex_type_check ').css({
+                'background-color': '#FC7BA2'
+            });
+            $('.sex_type_nasi_soto').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.sex_type_nasi_soto').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
+
+    $('#sex_type_nasi_naka').change(function(){
+        if ($(this).is(':checked')) {
+            $('.sex_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.sex_type_check ').css({
+                'background-color': '#FC7BA2'
+            });
+            $('.sex_type_nasi_naka').css({
+                'background-color': '#FC7BA2'
+            });
+        } else {
+            $('.sex_type_nasi_naka').css({
+                'background-color': '#FFF',
+            });
+        }
+    });
 
     $('.feel_type').on('click', function() {
         if ($(this).prop('checked')){

@@ -13,46 +13,91 @@
 
     <ul class="feel-field">
       <li>
-        <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_fine" value="fine" >
-        <label for="feel_type_fine" class="feel_type_fine feel_type_label">最高！</label>
+        <% if @calendar.feel_type == 1 %>
+
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_like" value="1" checked="checked">
+        <% else %>
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_like" value="1">
+        <% end %>
+        <label for="feel_type_like" class="feel_type_like feel_type_label">ハッピー</label>
       </li>
 
       <li>
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_like" value="like">
-      <label for="feel_type_like" class="feel_type_like feel_type_label">ハッピー</label>
+        <% if @calendar.feel_type == 2 %>
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_soso" value="2" checked="checked">
+        <% else %>
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_soso" value="2">
+        <% end %>
+        <label for="feel_type_soso" class="feel_type_soso feel_type_label">まぁまぁ</label>
       </li>
 
       <li>
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_soso" value="soso">
-      <label for="feel_type_soso" class="feel_type_soso feel_type_label">まぁまぁ</label>
-      </li>
-
-      <li>
-      <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_bad" value="bad">
-      <label for="feel_type_bad" class="feel_type_bad feel_type_label">イライラ</label>
+        <% if @calendar.feel_type == 3 %>
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_bad" value="3" checked="checked">
+        <% else %>
+            <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_bad" value="3">
+        <% end %>
+        <label for="feel_type_bad" class="feel_type_bad feel_type_label">イライラ</label>
       </li>
 
     </ul>
 
     <ul id="today_status_check" class="clearfix">
       <li>
-        <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type" %>
+        <% if @calendar.condition_type == 1 %>
+            <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type", checked:"checked" %>
+        <% else %>
+            <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type" %>
+        <% end %>
         <label for="seiri_check" class="seiri_check_label">生</label>
       </li>
 
       <li>
-        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="unknown" id="sex_check">
-        <label for="sex_check" class="sex_check_label">S</label>
+        <% if @calendar.sex_type == 1 || @calendar.sex_type == 2 || @calendar.sex_type == 3 || @calendar.sex_type == 4 %>
+            <%= form.check_box :sex_type, id:"sex_check", class:"sex_type", checked:"checked" %>
+        <% else %>
+            <%= form.check_box :sex_type, id:"sex_check", class:"sex_type" %>
+      <% end %>
+        <label for="sex_check" class="sex_type_check sex_check_label">Sex</label>
       </li>
     </ul>
 
-    <div id="sex-result" style="display: none">
+    <% if @calendar.sex_type == 2 || @calendar.sex_type == 3 || @calendar.sex_type == 4 %>
+        <div id="sex-result">
+    <% else %>
+        <div id="sex-result" style="display: none">
 
-      <div class="sex_type-field">
-        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="contraception">避
-        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="to_go_out">なし(外)
-        <input type="checkbox" name="calendar[sex_type]" class="sex_type" value="to_go_in">なし(中)
-      </div>
+    <% end %>
+
+    <ul class="sex-field">
+        <li>
+          <% if @calendar.sex_type == 2 %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_ari" value="2" checked="checked">
+          <% else %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_ari" value="2">
+          <% end %>
+          <label for="sex_type_ari" class="sex_type_ari sex_type_label">避妊</label>
+        </li>
+
+        <li>
+          <% if @calendar.sex_type == 3 %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_soto" value="3" checked="checked">
+          <% else %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_soto" value="3">
+          <% end %>
+          <label for="sex_type_nasi_soto" class="sex_type_nasi_soto sex_type_label">無避妊膣外</label>
+        </li>
+
+        <li>
+          <% if @calendar.sex_type == 4 %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_naka" value="4" checked="checked">
+          <% else %>
+              <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_naka" value="4">
+          <% end %>
+          <label for="sex_type_nasi_naka" class="sex_type_nasi_naka sex_type_label">無避妊膣内</label>
+        </li>
+
+      </ul>
 
 
     </div>

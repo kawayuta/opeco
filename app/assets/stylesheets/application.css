@@ -185,6 +185,15 @@ header ul li {
     opacity: 0.5;
 }
 
+#today_status_check li input[type=checkbox]:checked + label.seiri_check_label {
+    position: relative;
+    top:-60px;
+    width:175.5px;
+    height:60px;
+    background-color: #F26574;
+    border-radius: 10px;
+    overflow: hidden;
+}
 .seiri_check_label {
     position: relative;
     top:-60px;
@@ -195,6 +204,16 @@ header ul li {
     overflow: hidden;
 }
 
+
+#today_status_check li input[type=checkbox]:checked + label.sex_check_label {
+    position: relative;
+    top:-60px;
+    width:175.5px;
+    height:60px;
+    background-color: #FC7BA2;
+    border-radius: 10px;
+    overflow: hidden;
+}
 .sex_check_label {
     position: relative;
     top:-60px;
@@ -205,13 +224,61 @@ header ul li {
     overflow: hidden;
 }
 
-.feel-field {
 
+
+.sex-field li {
+    width:110px;
+    height:80px;
+    float: left;
+    margin-left:13.5px;
+    margin-bottom:13.5px;
+    padding:0;
+}
+.sex-field li input[type=checkbox] {
+    width:110px;
+    height:80px;
+    opacity: 0.5;
+}
+
+.sex-field li label{
+    position: relative;
+    top:-80px;
+}
+
+.sex_type_ari {
+    width:110px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.sex_type_nasi_soto {
+    width:110px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.sex_type_nasi_naka {
+    width:110px;
+    height:80px;
+    background-color: #FFF;
+    border-radius: 30px;
+}
+
+.sex-field li input[type=checkbox]:checked + label.sex_type_ari{
+    background-color: #FC7BA2;
+}
+.sex-field li input[type=checkbox]:checked + label.sex_type_nasi_soto{
+    background-color: #FC7BA2;
+}
+.sex-field li input[type=checkbox]:checked + label.sex_type_nasi_naka{
+    background-color: #FC7BA2;
 }
 
 
 .feel-field li {
-    width:80px;
+    width:110px;
     height:80px;
     float: left;
     margin-left:13.5px;
@@ -219,39 +286,42 @@ header ul li {
     padding:0;
 }
 .feel-field li input[type=checkbox] {
-    width:80px;
+    width:110px;
     height:80px;
     opacity: 0.5;
 }
 
-.feel-field li label {
+.feel-field li label{
     position: relative;
     top:-80px;
 }
 
-.feel_type_fine {
-    width:80px;
-    height:80px;
-    background-color: #FFF;
-    border-radius: 30px;
+.feel-field li input[type=checkbox]:checked + label.feel_type_like{
+    background-color: #FC7BA2;
+}
+.feel-field li input[type=checkbox]:checked + label.feel_type_soso{
+    background-color: #FC7BA2;
+}
+.feel-field li input[type=checkbox]:checked + label.feel_type_bad{
+    background-color: #FC7BA2;
 }
 
 .feel_type_like {
-    width:80px;
+    width:110px;
     height:80px;
     background-color: #FFF;
     border-radius: 30px;
 }
 
 .feel_type_soso {
-    width:80px;
+    width:110px;
     height:80px;
     background-color: #FFF;
     border-radius: 30px;
 }
 
 .feel_type_bad {
-    width:80px;
+    width:110px;
     height:80px;
     background-color: #FFF;
     border-radius: 30px;

@@ -51,7 +51,14 @@ class CalendarsController < ApplicationController
     before_month_seiri = last_seiri << 1
     before_month_seiri_record = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", before_month_seiri.strftime("%Y-%m") + "-1",before_month_seiri.strftime("%Y-%m") + "-31").order(:ymd).last
 
-    if before_month_seiri_record.present? == true
+
+      last_seiri_count = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").count
+
+
+      @next_seiri = last_seiri + 28
+      @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
+
+      if before_month_seiri_record.present? == true
 
       before_month_seiri_array = before_month_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
       last_month_seiri_array = last_start_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
@@ -59,9 +66,6 @@ class CalendarsController < ApplicationController
       last_month_seiri_array_data = Date.new(last_month_seiri_array[0].to_i,last_month_seiri_array[1].to_i,last_month_seiri_array[2].to_i)
 
       @user_next_seiri = before_month_seiri_array_data - last_month_seiri_array_data
-
-      last_seiri_count = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").count
-
 
       if @user_next_seiri.to_i.abs <= 25
         @next_seiri = last_seiri + 28
@@ -78,9 +82,7 @@ class CalendarsController < ApplicationController
           @next_hairan = @next_seiri - ((@user_next_seiri.to_i.abs- 14) - 5)
         end
       end
-    else
-      @next_seiri = last_seiri + 28
-      @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
+
     end
       end
 
