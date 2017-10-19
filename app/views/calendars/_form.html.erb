@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-    <ul class="feel-field">
+    <ul class="feel-field clearfix">
       <li>
         <% if @calendar.feel_type == 1 %>
 
@@ -19,7 +19,7 @@
         <% else %>
             <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_like" value="1">
         <% end %>
-        <label for="feel_type_like" class="feel_type_like feel_type_label">ハッピー</label>
+        <label for="feel_type_like" class="feel_type_like feel_type_label"><i class="fa fa-smile-o" aria-hidden="true"></i>HAPPY</label>
       </li>
 
       <li>
@@ -28,7 +28,7 @@
         <% else %>
             <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_soso" value="2">
         <% end %>
-        <label for="feel_type_soso" class="feel_type_soso feel_type_label">まぁまぁ</label>
+        <label for="feel_type_soso" class="feel_type_soso feel_type_label"><i class="fa fa-meh-o" aria-hidden="true"></i>SOSO</label>
       </li>
 
       <li>
@@ -37,7 +37,7 @@
         <% else %>
             <input type="checkbox" name="calendar[feel_type]" class="feel_type" id="feel_type_bad" value="3">
         <% end %>
-        <label for="feel_type_bad" class="feel_type_bad feel_type_label">イライラ</label>
+        <label for="feel_type_bad" class="feel_type_bad feel_type_label"><i class="fa fa-frown-o" aria-hidden="true"></i>BAD</label>
       </li>
 
     </ul>
@@ -49,7 +49,7 @@
         <% else %>
             <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type" %>
         <% end %>
-        <label for="seiri_check" class="seiri_check_label">生</label>
+        <label for="seiri_check" class="seiri_check_label"><i class="fa fa-tint" aria-hidden="true"></i>生理 ・ 出血</label>
       </li>
 
       <li>
@@ -58,7 +58,7 @@
         <% else %>
             <%= form.check_box :sex_type, id:"sex_check", class:"sex_type" %>
       <% end %>
-        <label for="sex_check" class="sex_type_check sex_check_label">Sex</label>
+        <label for="sex_check" class="sex_type_check sex_check_label"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX</label>
       </li>
     </ul>
 
@@ -85,7 +85,7 @@
           <% else %>
               <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_soto" value="3">
           <% end %>
-          <label for="sex_type_nasi_soto" class="sex_type_nasi_soto sex_type_label">無避妊膣外</label>
+          <label for="sex_type_nasi_soto" class="sex_type_nasi_soto sex_type_label">未避妊外射</label>
         </li>
 
         <li>
@@ -94,7 +94,7 @@
           <% else %>
               <input type="checkbox" name="calendar[sex_type]" class="sex_type" id="sex_type_nasi_naka" value="4">
           <% end %>
-          <label for="sex_type_nasi_naka" class="sex_type_nasi_naka sex_type_label">無避妊膣内</label>
+          <label for="sex_type_nasi_naka" class="sex_type_nasi_naka sex_type_label">未避妊内射</label>
         </li>
 
       </ul>

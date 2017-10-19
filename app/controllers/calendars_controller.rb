@@ -9,6 +9,7 @@ class CalendarsController < ApplicationController
   # GET /calendars.json
   def index
     @now = Time.current
+    @today = Date.today
     @set_calendar_ym = (set_calendar_ym)
 
     if @set_calendar_ym[:month] == "0"
@@ -86,7 +87,8 @@ class CalendarsController < ApplicationController
     end
       end
 
-
+    @countdown_seiri = @next_seiri - @today
+    @countdown_hairan = @next_hairan - @today
 
 
 

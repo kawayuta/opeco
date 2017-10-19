@@ -5,15 +5,47 @@
 </nav>
 
 <div class="today_page">
+  <div class="today_page_user_status">
+  <ul>
+      <% if @next_hairan.present? %>
+          <li>
+            <h3>次回の排卵予定日まで...</h3>
+            <p class="countdown_hairan"><%= @countdown_hairan.to_s.split('/').first %> days remaining</p>
+            <p class="what_is_day_hairan"><%= @next_hairan.strftime('%m月%d日') %></p>
+          </li>
+      <% end %>
+
+      <% if @next_seiri.present? %>
+          <li>
+            <h3>次回の生理予定日まで...</h3>
+            <p class="countdown_seiri"><%= @countdown_seiri.to_s.split('/').first %> days remaining</p>
+            <p class="what_is_day_seiri"><%= @next_seiri.strftime('%m月%d日') %></p>
+          </li>
+     <% end %>
+  </ul>
+  </div>
   <%= render 'form', calendar: @calendar %>
 </div>
 <div class="calendars">
 
-  <%= link_to '<<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i - 1 : @now.strftime("%Y").to_i - 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
-  <%= link_to '<', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i - 1 : @now.strftime("%m").to_i - 1%>
-  <%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month) ? @show_month:@now.strftime("%m") %>月
-  <%= link_to '>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i + 1 : @now.strftime("%m").to_i + 1%>
-  <%= link_to '>>', controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@set_calendar_ym[:year]}".to_i + 1 : @now.strftime("%Y").to_i + 1, month: (@set_calendar_ym[:month]) ? "#{@set_calendar_ym[:month]}".to_i : @now.strftime("%m").to_i%>
+  <nav id="calendars_date-navigate">
+    <ul>
+      <li>
+        <%= link_to (content_tag(:i,'', class: 'fa fa-angle-left')), controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i - 1 : @now.strftime("%m").to_i - 1%>
+      </li>
+
+      <li>
+        <%= link_to '今日', calendars_path %>
+      </li>
+      <li>
+        <%= link_to (content_tag(:i,'', class: 'fa fa-angle-right')), controller: "calendars", action: "index", year: (@set_calendar_ym[:year]) ? "#{@show_year}" : @now.strftime("%Y"), month: (@set_calendar_ym[:month]) ? "#{@show_month}".to_i + 1 : @now.strftime("%m").to_i + 1%>
+      </li>
+    </ul>
+
+    <div class="calendars-year-month-today"><%= (@show_year) ? @show_year : @now.strftime("%Y") %>年<%= (@show_month) ? @show_month:@now.strftime("%m") %>月</div>
+
+
+  </nav>
 
 
   <ul>
@@ -95,8 +127,7 @@
   <% end %>
 </ul>
 
-  次の生理予定日は<%= @next_seiri %>です<br />
-  次の排卵日は<%= @next_hairan %>です
+
 </div>
 
 

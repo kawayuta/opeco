@@ -69,7 +69,7 @@ $(document).on('turbolinks:load', function() {
                 'background-color': '#FFF',
             });
             $('.feel_type_soso').css({
-                'background-color': '#FC7BA2'
+                'background-color': '#94DEF9'
             });
         } else {
             $('.feel_type_soso').css({
@@ -85,7 +85,7 @@ $(document).on('turbolinks:load', function() {
                 'background-color': '#FFF',
             });
             $('.feel_type_bad').css({
-                'background-color': '#FC7BA2'
+                'background-color': '#CAABE0'
             });
         } else {
             $('.feel_type_bad').css({
@@ -102,7 +102,11 @@ $(document).on('turbolinks:load', function() {
                 'background-color': '#FFF',
             });
             $('.sex_type_check ').css({
-                'background-color': '#FC7BA2'
+                'background-color': '#FC7BA2',
+                'color': '#FFF'
+            });
+            $('.sex_type_check i').css({
+                'color': '#FFF'
             });
             $('.sex_type_ari').css({
                 'background-color': '#FC7BA2'
@@ -121,7 +125,11 @@ $(document).on('turbolinks:load', function() {
                 'background-color': '#FFF',
             });
             $('.sex_type_check ').css({
-                'background-color': '#FC7BA2'
+                'background-color': '#FC7BA2',
+                'color': '#FFF'
+            });
+            $('.sex_type_check i').css({
+                'color': '#FFF'
             });
             $('.sex_type_nasi_soto').css({
                 'background-color': '#FC7BA2'
@@ -139,7 +147,11 @@ $(document).on('turbolinks:load', function() {
                 'background-color': '#FFF',
             });
             $('.sex_type_check ').css({
-                'background-color': '#FC7BA2'
+                'background-color': '#FC7BA2',
+                'color': '#FFF'
+            });
+            $('.sex_type_check i').css({
+                'color': '#FFF'
             });
             $('.sex_type_nasi_naka').css({
                 'background-color': '#FC7BA2'
@@ -147,6 +159,29 @@ $(document).on('turbolinks:load', function() {
         } else {
             $('.sex_type_nasi_naka').css({
                 'background-color': '#FFF',
+            });
+        }
+    });
+
+
+    $('#sex_check').change(function(){
+        if ($(this).is(':checked')) {
+            $('.sex_type_label').css({
+                'background-color': '#FFF',
+            });
+            $('.sex_type_check ').css({
+                'background-color': '#FC7BA2',
+                'color': '#FFF'
+            });
+            $('.sex_type_check i').css({
+                'color': '#FFF'
+            });
+        } else {
+            $('.sex_type_check ').css({
+                'color': '#242A42'
+            });
+            $('.sex_type_check i').css({
+                'color': '#FA7DA2'
             });
         }
     });

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -45,6 +46,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, Meiryo, sans-serif;
 }
 ol, ul {
     list-style: none;
@@ -87,12 +89,122 @@ header ul li {
     background-color: #FED0D0;
     float:left;
 }
+#calendars_date-navigate {
+    width:100%;
+    margin-top:15px;
+    margin-bottom:25px;
+}
+#calendars_date-navigate ul {
+    width:130px;
+    border:none;
+    margin-left: 7px;
+    margin-bottom: 9px;
+    float:left;
+}
+#calendars_date-navigate ul li {
+    font-size:14px;
+    border:1px solid #EEE;
+    border-radius:3px;
+    margin-left:3px;
+    margin-right:3px;
+    overflow:hidden;
+}
+
+#calendars_date-navigate ul li a {
+    width:100%;
+    height:23px;
+    padding-left:10px;
+    padding-right:10px;
+    display: block;
+    text-decoration: none;
+    font-size:12px;
+    line-height: 2em;
+}
+#calendars_date-navigate ul li a i{
+    font-size:16px;
+
+}
+
+#calendars_date-navigate .calendars-year-month-today {
+    position: relative;
+    left:-60px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.today_page_user_status ul {
+    padding-top:15px;
+
+}
+.today_page_user_status ul li {
+    width:93%;
+    height:110px;
+    margin:0 auto;
+    margin-bottom: 15px;
+    background-color:#EEE;
+    border-radius:8px;
+}
+
+.today_page_user_status ul li h3 {
+    padding-left: 10px;
+    padding-top: 10px;
+    color:#000;
+    font-size:14px;
+}
+
+
+.today_page_user_status ul li:nth-child(1) {
+    background-color:#F7E7B1;
+}
+
+.today_page_user_status ul li:nth-child(2) {
+    background-color:#F8B59E;
+}
+
+.today_page_user_status ul li .countdown_hairan {
+    font-size:25px;
+    text-align: center;
+    line-height: 2.5em;
+    letter-spacing: 2px;
+    color:#FFA070;
+    text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #fff;
+
+}
+.today_page_user_status ul li .countdown_seiri {
+    font-size:25px;
+    text-align: center;
+    line-height: 2.5em;
+    letter-spacing: 2px;
+    color:#FD80B0;
+    text-shadow: 0 -1px 1px #FFF, -1px 0 1px rgba(255,255,255,0.3), 1px 0 1px rgba(255,255,255,0.3);
+
+}
+.what_is_day_hairan {
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: -3px;
+    font-size:14px;
+
+}
+.what_is_day_seiri {
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: -3px;
+    font-size:14px;
+}
 
 .today_page {
     width:385px;
     height:100vh;
     background-color: #FF9A9A;
     float:left;
+}
+
+.today_page_user_status {
+
+    width:385px;
+    height:265px;
+    background-color: #fff;
 }
 .calendars {
     background-color: #FDFDFE;
@@ -169,7 +281,8 @@ header ul li {
 
 #today_status_check  {
     width:385px;
-    height:200px;
+    height:80px;
+    margin-top:20px;
 }
 
 #today_status_check li {
@@ -182,7 +295,7 @@ header ul li {
 #today_status_check li input[type=checkbox] {
     width:175px;
     height:60px;
-    opacity: 0.5;
+    opacity: 0;
 }
 
 #today_status_check li input[type=checkbox]:checked + label.seiri_check_label {
@@ -193,6 +306,8 @@ header ul li {
     background-color: #F26574;
     border-radius: 10px;
     overflow: hidden;
+    color:#FFF;
+
 }
 .seiri_check_label {
     position: relative;
@@ -202,6 +317,21 @@ header ul li {
     background-color: #FFF;
     border-radius: 10px;
     overflow: hidden;
+    color:#242A42;
+    text-align: center;
+}
+
+#today_status_check li input[type=checkbox]:checked + label.seiri_check_label i {
+    color:#FFF;
+
+}
+.seiri_check_label i {
+    font-size:30px;
+    line-height: 1.6em;
+    position: relative;
+    top:7px;
+    left:-10px;
+    color:#F06776;
 }
 
 
@@ -213,6 +343,8 @@ header ul li {
     background-color: #FC7BA2;
     border-radius: 10px;
     overflow: hidden;
+    color:#FFF;
+
 }
 .sex_check_label {
     position: relative;
@@ -222,60 +354,88 @@ header ul li {
     background-color: #FFF;
     border-radius: 10px;
     overflow: hidden;
+    color:#242A42;
+    text-align: center;
+
+}
+#today_status_check li input[type=checkbox]:checked + label.sex_check_label i {
+    color:#FFF;
 }
 
+.sex_check_label i {
+    font-size:30px;
+    line-height: 1.6em;
+    position: relative;
+    top:7px;
+    left:-10px;
+    color:#FA7DA2;
 
+}
 
+#sex-result {
+    width:324px;
+    height:60px;
+    margin:0 auto;
+}
 .sex-field li {
-    width:110px;
-    height:80px;
+    width: 90px;
+    height:40px;
     float: left;
     margin-left:13.5px;
     margin-bottom:13.5px;
     padding:0;
+    font-size:14px;
+    text-align: center;
+    line-height: 2.6em;
 }
 .sex-field li input[type=checkbox] {
-    width:110px;
-    height:80px;
-    opacity: 0.5;
+    width: 90px;
+    height:40px;
+    opacity: 0;
 }
 
 .sex-field li label{
     position: relative;
-    top:-80px;
+    top:-40px;
 }
 
 .sex_type_ari {
-    width:110px;
-    height:80px;
+    width:90px;
+    height:40px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .sex_type_nasi_soto {
-    width:110px;
-    height:80px;
+    width:90px;
+    height:40px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .sex_type_nasi_naka {
-    width:110px;
-    height:80px;
+    width:90px;
+    height:40px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .sex-field li input[type=checkbox]:checked + label.sex_type_ari{
     background-color: #FC7BA2;
+    color:#FFF;
 }
 .sex-field li input[type=checkbox]:checked + label.sex_type_nasi_soto{
     background-color: #FC7BA2;
+    color:#FFF;
 }
 .sex-field li input[type=checkbox]:checked + label.sex_type_nasi_naka{
     background-color: #FC7BA2;
+    color:#FFF;
 }
 
+.feel-field {
+    margin-top: 15px;
+}
 
 .feel-field li {
     width:110px;
@@ -288,41 +448,83 @@ header ul li {
 .feel-field li input[type=checkbox] {
     width:110px;
     height:80px;
-    opacity: 0.5;
+    opacity: 0;
 }
 
 .feel-field li label{
     position: relative;
     top:-80px;
+    text-align: center;
+
 }
 
 .feel-field li input[type=checkbox]:checked + label.feel_type_like{
-    background-color: #FC7BA2;
+    background-color: #FA7DA2;
+    color:#242A42;
 }
 .feel-field li input[type=checkbox]:checked + label.feel_type_soso{
-    background-color: #FC7BA2;
+    background-color: #94DEF9;
+    color:#242A42;
+
 }
 .feel-field li input[type=checkbox]:checked + label.feel_type_bad{
-    background-color: #FC7BA2;
+    background-color: #CAABE0;
+    color:#242A42;
+
+}
+.feel-field li input[type=checkbox]:checked + label i{
+    color:#FFF;
 }
 
 .feel_type_like {
     width:110px;
     height:80px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 25px;
+    border:2px solid #E94C86;
+    color:#B2B5C0;
+    letter-spacing: 1px;
+}
+.feel_type_like i{
+    color:#E94C86;
+    width:110px;
+    text-align: center;
+    font-size:48px;
+    line-height:1.2em;
 }
 
 .feel_type_soso {
     width:110px;
     height:80px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 25px;
+    border:2px solid #4DC5F1;
+    color:#B2B5C0;
+    letter-spacing: 1px;
+}
+
+.feel_type_soso i{
+    color:#4DC5F1;
+    width:110px;
+    text-align: center;
+    font-size:48px;
+    line-height:1.2em;
 }
 
 .feel_type_bad {
     width:110px;
     height:80px;
     background-color: #FFF;
-    border-radius: 30px;
+    border-radius: 25px;
+    border:2px solid #8662BF;
+    color:#B2B5C0;
+    letter-spacing: 1px;
+}
+
+.feel_type_bad i{
+    color:#8662BF;
+    width:110px;
+    text-align: center;
+    font-size:48px;
+    line-height:1.2em;
 }
