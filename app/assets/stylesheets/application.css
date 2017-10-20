@@ -99,7 +99,8 @@ header ul li {
     border:none;
     margin-left: 7px;
     margin-bottom: 9px;
-    float:left;
+    float: left;
+
 }
 #calendars_date-navigate ul li {
     font-size:14px;
@@ -112,7 +113,6 @@ header ul li {
 
 #calendars_date-navigate ul li a {
     width:100%;
-    height:23px;
     padding-left:10px;
     padding-right:10px;
     display: block;
@@ -122,16 +122,23 @@ header ul li {
 }
 #calendars_date-navigate ul li a i{
     font-size:16px;
-
 }
 
 #calendars_date-navigate .calendars-year-month-today {
-    position: relative;
-    left:-60px;
+    width : -webkit-calc(100% - 138px) ;
+    width : calc(100% - 138px);
     text-align: center;
     letter-spacing: 2px;
+    float: left;
+    line-height: 2em;
 }
 
+
+#calendars_date-navigate .calendars-year-month-today span {
+    position: relative;
+    left:-60px;
+
+}
 .today_page_user_status_block {
     width:93%;
     margin:0 auto;
@@ -344,7 +351,7 @@ header ul li {
 }
 
 .calendars ul li.card_seiri{
-    background-color: #FD9A9B;
+    background-color: #FDD0D0;
 }
 
 .calendars ul li.card + li.card {
@@ -356,6 +363,8 @@ header ul li {
     width:100%;
     height:100%;
     display: block;
+    text-decoration: none;
+    font-size: 14px;
 }
 .calendars ul li.card a:hover {
     background-color: inherit;
@@ -383,6 +392,135 @@ header ul li {
 }
 .calendars ul li.week + li.week {
     border-left: 1px solid #EEEEFF;
+}
+
+.what_is_today{
+    text-align: center;
+    margin-top: 13px;
+    margin-bottom: 8px;
+}
+
+.card_icon_sex {
+    background-color: #FC7BA2;
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+}
+
+.card_icon_sex i {
+    background-color: #FFF;
+    width:25px;
+    height:25px;
+    text-align: center;
+    line-height:1.9em;
+    border-radius: 50%;
+    color: #FC7BA2;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+.card_icon_feel_happy {
+    background-color: #E74F86;
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+}
+.card_icon_feel_happy i {
+    background-color: #FFF;
+    width:25px;
+    height:25px;
+    text-align: center;
+    line-height:1.9em;
+    border-radius: 50%;
+    color: #E74F86;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+.card_icon_feel_soso {
+    background-color: #54C5EF;
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+}
+.card_icon_feel_soso i {
+    background-color: #FFF;
+    width:25px;
+    height:25px;
+    text-align: center;
+    line-height:1.9em;
+    border-radius: 50%;
+    color: #54C5EF;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+.card_icon_feel_bad {
+    background-color: #8565BC;
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+}
+.card_icon_feel_bad i {
+    background-color: #FFF;
+    width:25px;
+    height:25px;
+    text-align: center;
+    line-height:1.9em;
+    border-radius: 50%;
+    color: #8565BC;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.card_icon_seiri {
+    background-color: #F06776;
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+}
+.card_icon_seiri i {
+    background-color: #FFF;
+    width:25px;
+    height:25px;
+    text-align: center;
+    line-height:1.9em;
+    border-radius: 50%;
+    color: #F06776;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 #today_status_check  {
