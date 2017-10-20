@@ -132,52 +132,127 @@ header ul li {
     letter-spacing: 2px;
 }
 
-.today_page_user_status ul {
-    padding-top:15px;
-
-}
-.today_page_user_status ul li {
+.today_page_user_status_block {
     width:93%;
-    height:110px;
     margin:0 auto;
-    margin-bottom: 15px;
-    background-color:#EEE;
     border-radius:8px;
 }
 
-.today_page_user_status ul li h3 {
+.today_page_user_status_block_2 {
+    width:93%;
+    margin:0 auto;
+    border-radius:8px;
+    margin-top: 10px;
+}
+
+.today_page_user_status_block_2 {
+    width:93%;
+    margin:0 auto;
+    background-color:#EEE;
+    border-radius:8px;
+    margin-top: 10px;
+}
+
+.today_page_user_status_block_3 {
+    width:93%;
+    margin:0 auto;
+    background-color:#EEE;
+    border-radius:8px;
+    margin-top: 10px;
+}
+
+.today_page_user_status_block h3 {
     padding-left: 10px;
     padding-top: 10px;
-    color:#000;
+    color:#FFF;
     font-size:14px;
 }
 
 
-.today_page_user_status ul li:nth-child(1) {
-    background-color:#F7E7B1;
+.today_page_user_status_block_2 h3 {
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:#FFF;
+    font-size:14px;
+    float: left;
+}
+.today_page_user_status_block_3 h3 {
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:#FFF;
+    font-size:14px;
+    float: left;
 }
 
-.today_page_user_status ul li:nth-child(2) {
-    background-color:#F8B59E;
+
+.today_page_user_status_block {
+    background-color:#FDA571;
+
 }
 
-.today_page_user_status ul li .countdown_hairan {
-    font-size:25px;
+.today_page_user_status_block_2 {
+    background-color:#FD6698;
+
+}
+.today_page_user_status_block_3 {
+    background-color: #4BCFFD;
+}
+.today_page_user_status_block ul {
+
+    padding-bottom: 10px;
+}
+
+
+.today_page_user_status_block ul li {
+    margin-top: 10px;
+    margin-left: 10px;
+    color:#FFF;
+    line-height: 1.5em;
+}
+
+
+.today_page_user_status_block ul li.schedule_hairan:before {
+    content: "\f186";
+    font-family: FontAwesome;
+    float:left;
+    background-color: #FFF;
+    width:25px;
+    height:25px;
     text-align: center;
-    line-height: 2.5em;
-    letter-spacing: 2px;
-    color:#FFA070;
-    text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #fff;
-
+    line-height:1.5em;
+    border-radius: 50%;
+    color: #FDAB6E;
+    margin-right: 10px;
 }
-.today_page_user_status ul li .countdown_seiri {
-    font-size:25px;
+.today_page_user_status_block ul li.schedule_seiri:before {
+    content: "\f043";
+    font-family: FontAwesome;
+    float:left;
+    background-color: #FFF;
+    width:25px;
+    height:25px;
     text-align: center;
-    line-height: 2.5em;
+    line-height:1.7em;
+    border-radius: 50%;
+    color: #FD6A94;
+    margin-right: 10px;
+}
+
+.today_page_user_status_block_2 .osirase_ninsin h2 {
+    line-height: 1em;
     letter-spacing: 2px;
     color:#FD80B0;
-    text-shadow: 0 -1px 1px #FFF, -1px 0 1px rgba(255,255,255,0.3), 1px 0 1px rgba(255,255,255,0.3);
-
+    float: right;
+    background-color: #FFF;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 23px;
+    padding-right: 23px;
+    border-radius: 3px;
+    margin-right:10px;
+    margin-top:10px;
 }
 .what_is_day_hairan {
     text-align: center;
@@ -203,8 +278,18 @@ header ul li {
 .today_page_user_status {
 
     width:385px;
-    height:265px;
-    background-color: #fff;
+    background-color: #FEFAF1;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.form_title {
+    margin-top:18px;
+    margin-left:18px;
+}
+.form_today {
+    margin-left:18px;
+    margin-bottom:15px;
+    letter-spacing: 2px;
 }
 .calendars {
     background-color: #FDFDFE;
@@ -228,7 +313,7 @@ header ul li {
 
 .calendars ul li.card {
     position: relative;
-    height:125px;
+    height:155px;
     background-color: #FFF;
     float:left;
     list-style: none;
@@ -241,6 +326,27 @@ header ul li {
     width : calc((100% / 7) - 15px) ;
     flex-grow: 1;
 }
+
+.calendars ul li.card_hairan_sub {
+    background-color: #FEFAF2;
+}
+
+.calendars ul li.card_hairan_main {
+    background-color: #FCA476;
+}
+
+.calendars ul li.card_seiri_sub {
+    background-color: #FDD0D0;
+}
+
+.calendars ul li.card_seiri_main {
+    background-color: #FD9A9B;
+}
+
+.calendars ul li.card_seiri{
+    background-color: #FD9A9B;
+}
+
 .calendars ul li.card + li.card {
     border-left: 1px solid #EEEEFF;
 
@@ -252,7 +358,7 @@ header ul li {
     display: block;
 }
 .calendars ul li.card a:hover {
-    background-color: #FDF3F3;
+    background-color: inherit;
 }
 .calendars ul li.empty {
     background-color: #efefef;

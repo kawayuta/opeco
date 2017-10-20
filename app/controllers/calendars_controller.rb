@@ -8,6 +8,8 @@ class CalendarsController < ApplicationController
   # GET /calendars
   # GET /calendars.json
   def index
+
+
     @now = Time.current
     @today = Date.today
     @set_calendar_ym = (set_calendar_ym)
@@ -84,8 +86,24 @@ class CalendarsController < ApplicationController
         end
       end
 
-    end
       end
+
+      @next_hairan_schedule = []
+      @next_hairan_schedule.push((@next_hairan - 3).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@next_hairan - 2).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@next_hairan - 1).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@next_hairan + 1).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@next_hairan + 2).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@next_hairan + 3).strftime("%Y-%m-%d"))
+
+      @next_seiri_schedule = []
+      @next_seiri_schedule.push((@next_seiri - 1).strftime("%Y-%m-%d"))
+      @next_seiri_schedule.push((@next_seiri + 1).strftime("%Y-%m-%d"))
+
+
+
+    end
+
 
     @countdown_seiri = @next_seiri - @today
     @countdown_hairan = @next_hairan - @today
