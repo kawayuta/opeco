@@ -1,0 +1,5 @@
+<% @shares.each do |share| %>
+    <%= share.user.viewname %>
+    <%= User.find(share.partner_user_id).viewname %>
+    <%= share.share_flag %>
+<% end %>

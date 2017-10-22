@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902180323) do
+ActiveRecord::Schema.define(version: 20171022092542) do
 
   create_table "calendars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20170902180323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_calendars_on_user_id"
+  end
+
+  create_table "shares", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "partner_user_id"
+    t.string "username"
+    t.boolean "share_flag", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partner_user_id"], name: "index_shares_on_partner_user_id"
+    t.index ["user_id"], name: "index_shares_on_user_id"
   end
 
   create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -47,6 +58,8 @@ ActiveRecord::Schema.define(version: 20170902180323) do
     t.string "username"
     t.string "viewname"
     t.string "image"
+    t.integer "gender"
+    t.string "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

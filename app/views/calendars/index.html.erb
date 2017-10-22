@@ -124,7 +124,7 @@
                 <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
             <% end %>
         <% end %>
-        <% @data = Calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'")%>
+        <% @data = current_user.calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'")%>
         <% if @next_hairan_schedule.present? == true && @next_hairan_schedule.include?("#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d")) %>
            <li class="card card_hairan_sub">
         <% elsif @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
@@ -156,10 +156,6 @@
                     <div class="card_icon_feel_bad"><i class="fa fa-smile-o" aria-hidden="true"></i>BAD</div>
                 <% end%>
 
-                <% if @data.condition_type == 1 %>
-                    <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
-                <% end%>
-
                 <% if @data.sex_type == 1 %>
                     <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX</div>
                 <% elsif @data.sex_type == 2 %>
@@ -168,6 +164,10 @@
                     <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊外射)</div>
                 <% elsif @data.sex_type == 4 %>
                     <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊中射)</div>
+                <% end%>
+
+                <% if @data.condition_type == 1 %>
+                    <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
                 <% end%>
 
                 <% if @next_seiri.present? == true && @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>

@@ -9,7 +9,6 @@ class CalendarsController < ApplicationController
   # GET /calendars.json
   def index
 
-
     @now = Time.current
     @today = Date.today
     @set_calendar_ym = (set_calendar_ym)
@@ -34,7 +33,7 @@ class CalendarsController < ApplicationController
     else
     @month = @now.end_of_month.strftime("%d").to_i.abs
     end
-    @calendars = Calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
+    @calendars = current_user.calendar.where(created_at: @now.beginning_of_month..@now.end_of_month, user_id: current_user.id)
 
     if current_user.calendar.find_by("DATE(ymd) = '#{@now.to_time.strftime('%Y-%m-%d')}'").present? == true
       @calendar = current_user.calendar.find_by("DATE(ymd) = '#{@now.to_time.strftime('%Y-%m-%d')}'")
@@ -100,13 +99,11 @@ class CalendarsController < ApplicationController
       @next_seiri_schedule.push((@next_seiri - 1).strftime("%Y-%m-%d"))
       @next_seiri_schedule.push((@next_seiri + 1).strftime("%Y-%m-%d"))
 
-
+      @countdown_seiri = @next_seiri - @today
+      @countdown_hairan = @next_hairan - @today
 
     end
 
-
-    @countdown_seiri = @next_seiri - @today
-    @countdown_hairan = @next_hairan - @today
 
 
 
@@ -190,7 +187,7 @@ class CalendarsController < ApplicationController
 
   def today_check
     d = params.permit(:ymd)
-    @today = Calendar.find_by(ymd: d[:ymd])
+    @today = current_user.calendar.find_by(ymd: d[:ymd])
 
     if @today.present?
       redirect_to edit_calendar_url(@today)
