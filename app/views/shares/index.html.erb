@@ -2,4 +2,12 @@
     <%= share.user.viewname %>
     <%= User.find(share.partner_user_id).viewname %>
     <%= share.share_flag %>
+
+    <% if share.share_flag == true %>
+      <%= link_to '共有をやめる', change_share_path(share), remote: true, method: :put  %>
+    <% else %>
+      <%= link_to '共有する', change_share_path(share), remote: true, method: :put  %>
+    <% end %>
+
+
 <% end %>

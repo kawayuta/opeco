@@ -9,6 +9,12 @@ class CalendarsController < ApplicationController
   # GET /calendars.json
   def index
 
+    if current_user.gender == 'male'
+    @girl_friend = Share.where(partner_user_id: current_user, share_flag: true).pluck(:user_id)
+    @girl_friend_data = Calendar.where(user_id: @girl_friend)
+     @girl_friend_database = []
+
+    end
     @now = Time.current
     @today = Date.today
     @set_calendar_ym = (set_calendar_ym)

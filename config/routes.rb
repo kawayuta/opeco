@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :statuses
   resources :calendars
-  resources :shares
+  resources :shares do
+    member do
+      put 'change'
+    end
+  end
+
   get 'users/index'
 
   get 'users/show'

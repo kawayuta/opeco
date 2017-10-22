@@ -124,7 +124,19 @@
                 <li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li><li class="card empty"></li>
             <% end %>
         <% end %>
-        <% @data = current_user.calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'")%>
+
+        <% if current_user.gender == 'male' %>
+            <% @girl_friend_data.each do |data|%>
+              <% if data.ymd == "#{@show_date}-#{day}" %>
+                  <% @girl_friend_database.push(data) %>
+              <% end %>
+            <% end %>
+
+
+            <% @data = @girl_friend_database.select{|data| data.ymd == "#{@show_date}-#{day}" }.first %>
+        <% else %>
+            <% @data = current_user.calendar.find_by("DATE(ymd) = '#{@show_date}-#{day}'")%>
+        <% end %>
         <% if @next_hairan_schedule.present? == true && @next_hairan_schedule.include?("#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d")) %>
            <li class="card card_hairan_sub">
         <% elsif @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>

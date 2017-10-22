@@ -46,7 +46,7 @@ class SharesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @share.update(share_params)
+      if @share.update(share_update_params)
         format.html { redirect_to calendars_path, notice: '今日のデータを更新しました。' }
         format.json { render :show, status: :ok, location: @share }
       else
@@ -64,10 +64,41 @@ class SharesController < ApplicationController
     end
   end
 
+  def change
+    @share = Share.find(params[:id])
+    if @share.share_flag == true
+      @share.share_flag = false
+      respond_to do |format|
+        if @share.save
+          format.html { redirect_to shares_path, notice: '共有を中止しました' }
+          format.json { render :index, status: :ok, location: @share }
+        else
+          format.html { render :edit }
+          format.json { render json: @share.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @share.share_flag = true
+      respond_to do |format|
+        if @share.save
+          format.html { redirect_to shares_path, notice: '共有を開始しました' }
+          format.json { render :index, status: :ok, location: @share }
+        else
+          format.html { render :edit }
+          format.json { render json: @share.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+  end
   private
 
   def share_params
     params.require(:shares).permit(:user_id, :username)
+  end
+
+  def share_update_params
+    params.require(:shares).permit(:share_flag)
   end
 
   def set_shares
