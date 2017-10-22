@@ -143,6 +143,14 @@ header ul li {
     width:93%;
     margin:0 auto;
     border-radius:8px;
+    margin-top: 10px;
+}
+
+
+.today_page_user_status_block_0 {
+    width:93%;
+    margin:0 auto;
+    border-radius:8px;
 }
 
 .today_page_user_status_block_2 {
@@ -152,13 +160,6 @@ header ul li {
     margin-top: 10px;
 }
 
-.today_page_user_status_block_2 {
-    width:93%;
-    margin:0 auto;
-    background-color:#EEE;
-    border-radius:8px;
-    margin-top: 10px;
-}
 
 .today_page_user_status_block_3 {
     width:93%;
@@ -176,6 +177,15 @@ header ul li {
 }
 
 
+.today_page_user_status_block_0 h3 {
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:#FFF;
+    font-size:14px;
+    float: left;
+}
+
 .today_page_user_status_block_2 h3 {
     padding-left: 10px;
     padding-top: 20px;
@@ -184,6 +194,7 @@ header ul li {
     font-size:14px;
     float: left;
 }
+
 .today_page_user_status_block_3 h3 {
     padding-left: 10px;
     padding-top: 20px;
@@ -199,13 +210,19 @@ header ul li {
 
 }
 
+.today_page_user_status_block_0 {
+    background-color: #38DEE0;
+}
+
 .today_page_user_status_block_2 {
     background-color:#FD6698;
 
 }
+
 .today_page_user_status_block_3 {
     background-color: #4BCFFD;
 }
+
 .today_page_user_status_block ul {
 
     padding-bottom: 10px;
@@ -245,6 +262,22 @@ header ul li {
     border-radius: 50%;
     color: #FD6A94;
     margin-right: 10px;
+}
+
+
+.today_page_user_status_block_0 .unsei h2 {
+    line-height: 1em;
+    letter-spacing: 2px;
+    color:#FD80B0;
+    float: right;
+    background-color: #FFF;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 23px;
+    padding-right: 23px;
+    border-radius: 3px;
+    margin-right:10px;
+    margin-top:10px;
 }
 
 .today_page_user_status_block_2 .osirase_ninsin h2 {
@@ -313,7 +346,6 @@ header ul li {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     background-color: #FFF;
-    border: 1px solid #EEEEFF;
     border-radius:3px;
     position: relative;
 }
@@ -397,7 +429,22 @@ header ul li {
 .what_is_today{
     text-align: center;
     margin-top: 13px;
-    margin-bottom: 8px;
+    margin-bottom: 13px;
+}
+
+.what_is_today span{
+    background-color: #D4F4F6;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 15px;
+}
+
+.what_is_day{
+    text-align: center;
+    margin-top: 13px;
+    margin-bottom: 13px;
 }
 
 .card_icon_sex {
@@ -411,6 +458,8 @@ header ul li {
     padding-right: 1px;
     padding-bottom: 1px;
     color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
 }
 
 .card_icon_sex i {
@@ -437,6 +486,9 @@ header ul li {
     padding-right: 1px;
     padding-bottom: 1px;
     color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
+
 }
 .card_icon_feel_happy i {
     background-color: #FFF;
@@ -461,6 +513,8 @@ header ul li {
     padding-right: 1px;
     padding-bottom: 1px;
     color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
 }
 .card_icon_feel_soso i {
     background-color: #FFF;
@@ -486,6 +540,8 @@ header ul li {
     padding-right: 1px;
     padding-bottom: 1px;
     color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
 }
 .card_icon_feel_bad i {
     background-color: #FFF;
@@ -510,6 +566,8 @@ header ul li {
     padding-right: 1px;
     padding-bottom: 1px;
     color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
 }
 .card_icon_seiri i {
     background-color: #FFF;
@@ -648,6 +706,7 @@ header ul li {
     height:40px;
     background-color: #FFF;
     border-radius: 10px;
+    line-height:2.8em;
 }
 
 .sex_type_nasi_soto {
@@ -655,6 +714,7 @@ header ul li {
     height:40px;
     background-color: #FFF;
     border-radius: 10px;
+    line-height:2.8em;
 }
 
 .sex_type_nasi_naka {
@@ -662,6 +722,7 @@ header ul li {
     height:40px;
     background-color: #FFF;
     border-radius: 10px;
+    line-height:2.8em;
 }
 
 .sex-field li input[type=checkbox]:checked + label.sex_type_ari{

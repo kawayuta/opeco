@@ -1,12 +1,31 @@
  <nav id="sidebar">
   <ul>
     <li>TOP</li>
+
+    <% if user_signed_in? %>
+        <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+        <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+    <% end %>
   </ul>
 </nav>
 
 <div class="today_page">
   <div class="today_page_user_status">
     <h3 class="form_today">TODAY</h3>
+
+
+
+    <div class="today_page_user_status_block_0">
+      <ul>
+        <h3>今日の運勢</h3>
+        <li class="unsei clearfix">
+          <h2>データ入れる</h2>
+        </li>
+      </ul>
+    </div>
 
     <div class="today_page_user_status_block">
       <ul>
@@ -122,16 +141,11 @@
   <% end %>
         <% if @data.present? == true %>
             <%= link_to edit_calendar_path(id: @data.id ) do %>
-              <div class="what_is_today"><%= day %>日</div>
 
-                <% if @data.sex_type == 1 %>
-                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX</div>
-                <% elsif @data.sex_type == 2 %>
-                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(避妊)</div>
-                <% elsif @data.sex_type == 3 %>
-                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊外射)</div>
-                <% elsif @data.sex_type == 4 %>
-                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊中射)</div>
+                <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
+                    <div class="what_is_today"><span><%= day %>日</span></div>
+                <% else%>
+                    <div class="what_is_day"><%= day %>日</div>
                 <% end%>
 
                 <% if @data.feel_type == 1 %>
@@ -146,9 +160,20 @@
                     <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
                 <% end%>
 
+                <% if @data.sex_type == 1 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX</div>
+                <% elsif @data.sex_type == 2 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(避妊)</div>
+                <% elsif @data.sex_type == 3 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊外射)</div>
+                <% elsif @data.sex_type == 4 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊中射)</div>
+                <% end%>
+
                 <% if @next_seiri.present? == true && @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     生理予定日
                 <% end %>
+
                 <% if @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
@@ -158,13 +183,21 @@
         <% else %>
             <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
 
-              <div><%= day %>日</div>
+
+                <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
+                    <div class="what_is_today"><span><%= day %>日</span></div>
+                <% else%>
+                    <div class="what_is_day"><%= day %>日</div>
+                <% end%>
+
                 <% if @next_seiri.present? == true && @next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     生理予定日
                 <% end %>
+
                 <% if @next_hairan.present? == true && @next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
+
             <% end %>
 
         <% end %>
