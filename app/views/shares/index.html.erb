@@ -4,10 +4,15 @@
     <%= share.share_flag %>
 
     <% if share.share_flag == true %>
-      <%= link_to '共有をやめる', change_share_path(share), remote: true, method: :put  %>
+      <%= link_to '共有停止', change_share_path(share), remote: true, method: :put  %>
+
     <% else %>
-      <%= link_to '共有する', change_share_path(share), remote: true, method: :put  %>
+      <%= link_to '共有開始', change_share_path(share), remote: true, method: :put  %>
+        <%= link_to '拒否', share, method: :delete, data: { confirm: '共有を拒否しますか?' } %>
+
     <% end %>
+
+
 
 
 <% end %>

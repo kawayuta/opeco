@@ -15,15 +15,19 @@ class SharesController < ApplicationController
 
   def create
     @share = current_user.share.new(share_params)
-    @search_partner = User.find_by(username: @share.username)
+    @search_partner = User.find_by(username: @share.username, gender:'male')
 
     if @search_partner.present?
       if current_user.share.find_by(partner_user_id: @search_partner.id).present?
       @invite = current_user.share.find_by(partner_user_id: @search_partner.id)
       end
+
+      if Share.find_by(partner_user_id: @search_partner.id).present?
+        @partner_check = Share.find_by(partner_user_id: @search_partner.id)
+      end
     end
 
-    if @search_partner.present? && @search_partner != current_user && @invite.present? == false
+    if @search_partner.present? && @search_partner != current_user && @invite.present? == false && @partner_check.present? == false
         @share.partner_user_id = @search_partner.id
         respond_to do |format|
           if @share.save
@@ -38,9 +42,15 @@ class SharesController < ApplicationController
      elsif @search_partner == current_user
        flash[:notice] = "#{@share.username}さんはあなたです。"
        redirect_to new_share_path
-     elsif @invite.present?
+    elsif @partner_check.present? && @invite.present? == false
+        flash[:notice] = "#{@share.username}さんには既にパートナーがいます。"
+        redirect_to new_share_path
+    elsif @invite.present? && @invite.present? && @invite.share_flag == false
        flash[:notice] = "#{@share.username}さんは招待済みです。"
        redirect_to new_share_path
+    elsif @partner_check.present? && @invite.present? == true
+      flash[:notice] = "#{@share.username}さんは既にパートナーになっています。"
+      redirect_to new_share_path
     else
        flash[:notice] = "#{@share.username}さんは見つかりませんでした。"
        redirect_to new_share_path
@@ -61,7 +71,7 @@ class SharesController < ApplicationController
     end
   end
   
-  def destory
+  def destroy
     @share.destroy
     respond_to do |format|
       format.html { redirect_to calendars_url, notice: 'Calendar was successfully destroyed.' }
