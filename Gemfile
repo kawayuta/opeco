@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
 gem 'carrierwave', '~> 1.0'
+gem 'rmagick'
 gem 'enum_help'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

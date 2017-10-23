@@ -9,11 +9,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :viewname %><br />
-      <%= f.text_field :viewname, autofocus: true %>
-    </div>
-
-    <div class="field">
       <%= f.label :gender %><br />
       <%= f.select :gender, User.genders_i18n.keys.to_a, {}, autofocus: true %>
     </div>

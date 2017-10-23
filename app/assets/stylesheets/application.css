@@ -84,7 +84,7 @@ header ul li {
 }
 
 #sidebar {
-    width:140px;
+    width:80px;
     height:100vh;
     background-color: #FED0D0;
     float:left;
@@ -337,8 +337,8 @@ header ul li {
 
 }
 .calendars ul {
-    width : -webkit-calc(100% - 527px) ;
-    width : calc(100% - 527px);
+    width : -webkit-calc(100% - 467px) ;
+    width : calc(100% - 467px);
     display: flex;
     align-content: space-between;
     align-items: center;
@@ -352,7 +352,8 @@ header ul li {
 
 .calendars ul li.card {
     position: relative;
-    height:155px;
+    height: -webkit-calc(100vh - 125px) / 5) ;
+    height: calc((100vh - 125px) / 5) ;
     background-color: #FFF;
     float:left;
     list-style: none;
@@ -364,6 +365,8 @@ header ul li {
     width : -webkit-calc((100% / 7) - 15px) ;
     width : calc((100% / 7) - 15px) ;
     flex-grow: 1;
+    font-size: 14px;
+
 }
 
 .calendars ul li.card_hairan_sub {

@@ -12,8 +12,21 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   validates_presence_of :username
 
-  validates_presence_of :viewname
-
   enum gender: { male: 0, female: 1, other:2 }
+
+  mount_uploader :image, ImageUploader
+
+   def update_without_current_password(params, *options)
+       params.delete(:current_password)
+
+       if params[:password].blank? && params[:password_confirmation].blank?
+          params.delete(:password)
+          params.delete(:password_confirmation)
+       end
+
+       result = update_attributes(params, *options)
+       clean_up_passwords
+       result
+   end
 
 end

@@ -1,6 +1,8 @@
 class SharesController < ApplicationController
 
   before_action :set_shares, only: [:destroy]
+  before_action :new_shares_check, only: [:new]
+  before_action :authenticate_user!
 
   def index
     @shares = Share.where(user_id: current_user).or(Share.where(partner_user_id: current_user))
@@ -14,8 +16,11 @@ class SharesController < ApplicationController
   def create
     @share = current_user.share.new(share_params)
     @search_partner = User.find_by(username: @share.username)
-    if @invite.present?
-    @invite = current_user.share.find_by(partner_user_id: @search_partner.id)
+
+    if @search_partner.present?
+      if current_user.share.find_by(partner_user_id: @search_partner.id).present?
+      @invite = current_user.share.find_by(partner_user_id: @search_partner.id)
+      end
     end
 
     if @search_partner.present? && @search_partner != current_user && @invite.present? == false
@@ -105,4 +110,11 @@ class SharesController < ApplicationController
     @share = Share.find(params[:id])
   end
 
+  def new_shares_check
+    puts current_user.gender
+    if current_user.gender == 'male'
+      redirect_to shares_path
+      flash[:notice] = "パートナーからの招待が必要です。"
+    end
+  end
 end

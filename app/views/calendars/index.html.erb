@@ -5,9 +5,6 @@
     <% if user_signed_in? %>
         <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-        <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
     <% end %>
   </ul>
 </nav>
@@ -15,7 +12,6 @@
 <div class="today_page">
   <div class="today_page_user_status">
     <h3 class="form_today">TODAY</h3>
-
 
 
     <div class="today_page_user_status_block_0">
@@ -30,14 +26,14 @@
     <div class="today_page_user_status_block">
       <ul>
         <h3>次回予定日</h3>
-        <% if @my_status.next_hairan.present? %>
+        <% if @my_status.present? && @my_status.next_hairan.present? %>
               <li class="schedule_hairan clearfix">
                 <h2>排卵予定日まで <%= @countdown_hairan.to_s.split('/').first %> days - <span class="what_is_day_hairan"><%= @my_status.next_hairan.strftime('%m月%d日') %></span>
                 </h2>
               </li>
       <% end %>
 
-      <% if @my_status.next_seiri.present? %>
+      <% if @my_status.present? && @my_status.next_seiri.present? %>
             <li class="schedule_seiri clearfix">
               <h2>生理予定日まで <%= @countdown_seiri.to_s.split('/').first %> days - <span class="what_is_day_seiri"><%= @my_status.next_seiri.strftime('%m月%d日') %></span>
               </h2>
@@ -65,11 +61,14 @@
       </ul>
     </div>
 
+
   </div>
 
-  <h3 class="form_title">今日の気分は？</h3>
-
-  <%= render 'form', calendar: @calendar %>
+   <% unless current_user.gender == 'male' %>
+    <h3 class="form_title">今日の気分は？</h3>
+    <%= render 'form', calendar: @calendar %>
+  <% else %>
+  <% end %>
 </div>
 <div class="calendars">
 
@@ -140,11 +139,11 @@
         <% end %>
         <% if @next_hairan_schedule.present? == true && @next_hairan_schedule.include?("#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d")) %>
            <li class="card card_hairan_sub">
-        <% elsif @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+        <% elsif @my_status.present? && @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
            <li class="card card_hairan_main">
         <% elsif @next_seiri_schedule.present? == true && @next_seiri_schedule.include?("#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d")) %>
            <li class="card card_seiri_sub">
-        <% elsif @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+        <% elsif @my_status.present? && @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
            <li class="card card_seiri_main">
         <% elsif @data.present? == true && @data.condition_type == 1%>
             <li class="card card_seiri">
@@ -153,7 +152,8 @@
 
   <% end %>
         <% if @data.present? == true %>
-            <%= link_to edit_calendar_path(id: @data.id ) do %>
+            <% unless current_user.gender == 'male' %>
+              <%= link_to edit_calendar_path(id: @data.id ) do %>
 
                 <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
                     <div class="what_is_today"><span><%= day %>日</span></div>
@@ -190,17 +190,34 @@
                 <% if @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
-
-      <% end %>
-
-        <% else %>
-            <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
-
-
+              <% end %>
+            <% else %>
                 <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
                     <div class="what_is_today"><span><%= day %>日</span></div>
                 <% else%>
                     <div class="what_is_day"><%= day %>日</div>
+                <% end%>
+
+                <% if @data.feel_type == 1 %>
+                    <div class="card_icon_feel_happy"><i class="fa fa-smile-o aria-hidden="true"></i>HAPPY</div>
+                <% elsif @data.feel_type == 2 %>
+                    <div class="card_icon_feel_soso"><i class="fa fa-smile-o" aria-hidden="true"></i>SOSO</div>
+                <% elsif @data.feel_type == 3 %>
+                    <div class="card_icon_feel_bad"><i class="fa fa-smile-o" aria-hidden="true"></i>BAD</div>
+                <% end%>
+
+                <% if @data.sex_type == 1 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX</div>
+                <% elsif @data.sex_type == 2 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(避妊)</div>
+                <% elsif @data.sex_type == 3 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊外射)</div>
+                <% elsif @data.sex_type == 4 %>
+                    <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊中射)</div>
+                <% end%>
+
+                <% if @data.condition_type == 1 %>
+                    <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
                 <% end%>
 
                 <% if @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
@@ -210,10 +227,40 @@
                 <% if @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
                     排卵予定日
                 <% end %>
-
             <% end %>
 
-        <% end %>
+        <% else %>
+
+            <% unless current_user.gender == 'male' %>
+              <%= link_to new_calendar_path(ymd: "#{@show_date}-#{day}") do %>
+                <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
+                    <div class="what_is_today"><span><%= day %>日</span></div>
+                <% else%>
+                    <div class="what_is_day"><%= day %>日</div>
+                <% end%>
+                <% if @my_status.present? && @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    生理予定日
+                <% end %>
+                <% if @my_status.present? && @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    排卵予定日
+                <% end %>
+              <% end %>
+            <% else%>
+                <% if @today.strftime("%Y-%m-%d") == "#{@show_date}-#{day}"%>
+                    <div class="what_is_today"><span><%= day %>日</span></div>
+                <% else%>
+                    <div class="what_is_day"><%= day %>日</div>
+                <% end%>
+                <% if @my_status.present? && @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    生理予定日
+                <% end %>
+                <% if @my_status.present? && @my_status.next_hairan.present? == true && @my_status.next_hairan.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>
+                    排卵予定日
+                <% end %>
+            <% end %>
+
+
+  <% end %>
       </li>
         <% if day == @month %>
             <% week = "#{day}/#{(@show_month) ? @show_month:@now.strftime("%m")}/#{(@show_year) ? @show_year : @now.strftime("%Y")}".to_time%>
