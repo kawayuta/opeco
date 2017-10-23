@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :calendar
   has_many :share
+  has_one :status
 
 
   validates_uniqueness_of :username

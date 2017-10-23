@@ -1,6 +1,7 @@
 class CalendarsController < ApplicationController
   require 'date'
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
+  after_action :database_status_update, only: [:create, :edit, :update, :destroy]
   before_action :today_check, only: [:new]
   before_action :set_calendar_ym, only: [:index]
   before_action :authenticate_user!
@@ -9,12 +10,6 @@ class CalendarsController < ApplicationController
   # GET /calendars.json
   def index
 
-    if current_user.gender == 'male'
-    @girl_friend = Share.where(partner_user_id: current_user, share_flag: true).pluck(:user_id)
-    @girl_friend_data = Calendar.where(user_id: @girl_friend)
-     @girl_friend_database = []
-
-    end
     @now = Time.current
     @today = Date.today
     @set_calendar_ym = (set_calendar_ym)
@@ -47,70 +42,37 @@ class CalendarsController < ApplicationController
       @calendar = current_user.calendar.new(calendar_params_new)
     end
 
-    last_end_seiri_record = current_user.calendar.where(condition_type: 1).order(:ymd).last
-
-    if last_end_seiri_record.present? == true
-
-      last_seiri_day = last_end_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
-    last_seiri = Date.new(last_seiri_day[0].to_i,last_seiri_day[1].to_i,last_seiri_day[2].to_i)
-
-    last_start_seiri_record = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").order(:ymd).first
-
-    before_month_seiri = last_seiri << 1
-    before_month_seiri_record = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", before_month_seiri.strftime("%Y-%m") + "-1",before_month_seiri.strftime("%Y-%m") + "-31").order(:ymd).last
 
 
-      last_seiri_count = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").count
 
+    if current_user.gender == 'male'
+      @girl_friend = Share.where(partner_user_id: current_user, share_flag: true).pluck(:user_id)
+      @girl_friend_data = Calendar.where(user_id: @girl_friend)
+      @girl_friend_database = []
 
-      @next_seiri = last_seiri + 28
-      @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
-
-      if before_month_seiri_record.present? == true
-
-      before_month_seiri_array = before_month_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
-      last_month_seiri_array = last_start_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
-      before_month_seiri_array_data = Date.new(before_month_seiri_array[0].to_i,before_month_seiri_array[1].to_i,before_month_seiri_array[2].to_i)
-      last_month_seiri_array_data = Date.new(last_month_seiri_array[0].to_i,last_month_seiri_array[1].to_i,last_month_seiri_array[2].to_i)
-
-      @user_next_seiri = before_month_seiri_array_data - last_month_seiri_array_data
-
-      if @user_next_seiri.to_i.abs <= 25
-        @next_seiri = last_seiri + 28
-        if last_seiri_count.to_i > 0
-          @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
-        else
-          @next_hairan = @next_seiri - ((28 - 14) - 5)
-        end
-      else
-        @next_seiri = last_seiri + @user_next_seiri.to_i.abs
-        if last_seiri_count.to_i > 0
-          @next_hairan = @next_seiri - ((@user_next_seiri.to_i.abs - 14) - last_seiri_count.to_i)
-        else
-          @next_hairan = @next_seiri - ((@user_next_seiri.to_i.abs- 14) - 5)
-        end
-      end
-
-      end
-
-      @next_hairan_schedule = []
-      @next_hairan_schedule.push((@next_hairan - 3).strftime("%Y-%m-%d"))
-      @next_hairan_schedule.push((@next_hairan - 2).strftime("%Y-%m-%d"))
-      @next_hairan_schedule.push((@next_hairan - 1).strftime("%Y-%m-%d"))
-      @next_hairan_schedule.push((@next_hairan + 1).strftime("%Y-%m-%d"))
-      @next_hairan_schedule.push((@next_hairan + 2).strftime("%Y-%m-%d"))
-      @next_hairan_schedule.push((@next_hairan + 3).strftime("%Y-%m-%d"))
-
-      @next_seiri_schedule = []
-      @next_seiri_schedule.push((@next_seiri - 1).strftime("%Y-%m-%d"))
-      @next_seiri_schedule.push((@next_seiri + 1).strftime("%Y-%m-%d"))
-
-      @countdown_seiri = @next_seiri - @today
-      @countdown_hairan = @next_hairan - @today
-
+      @my_status = Status.find_by(user_id: @girl_friend)
+    else
+      @my_status = current_user.status
     end
 
+    if @my_status.present? == true
 
+      @next_hairan_schedule = []
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date - 3).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date - 2).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date - 1).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date + 1).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date + 2).strftime("%Y-%m-%d"))
+      @next_hairan_schedule.push((@my_status.next_hairan.to_date + 3).strftime("%Y-%m-%d"))
+
+      @next_seiri_schedule = []
+      @next_seiri_schedule.push((@my_status.next_seiri.to_date - 1).strftime("%Y-%m-%d"))
+      @next_seiri_schedule.push((@my_status.next_seiri.to_date + 1).strftime("%Y-%m-%d"))
+
+      @countdown_seiri = @my_status.next_seiri.to_date - @today
+      @countdown_hairan = @my_status.next_hairan.to_date - @today
+
+    end
 
 
   end
@@ -202,6 +164,64 @@ class CalendarsController < ApplicationController
 
   def set_calendar_ym
     params.permit(:year,:month)
+  end
+
+
+  def database_status_update
+    last_end_seiri_record = current_user.calendar.where(condition_type: 1).order(:ymd).last
+
+    if last_end_seiri_record.present? == true
+
+      last_seiri_day = last_end_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
+      last_seiri = Date.new(last_seiri_day[0].to_i,last_seiri_day[1].to_i,last_seiri_day[2].to_i)
+
+      last_start_seiri_record = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").order(:ymd).first
+
+      before_month_seiri = last_seiri << 1
+      before_month_seiri_record = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", before_month_seiri.strftime("%Y-%m") + "-1",before_month_seiri.strftime("%Y-%m") + "-31").order(:ymd).last
+
+
+      last_seiri_count = current_user.calendar.where("condition_type = 1 and DATE(ymd) between ? and ?", last_seiri.strftime("%Y-%m") + "-1", last_seiri.strftime("%Y-%m") + "-31").count
+
+
+      @next_seiri = last_seiri + 28
+      @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
+
+      if before_month_seiri_record.present? == true
+
+        before_month_seiri_array = before_month_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
+        last_month_seiri_array = last_start_seiri_record.ymd.strftime("%Y-%m-%d").split("-")
+        before_month_seiri_array_data = Date.new(before_month_seiri_array[0].to_i,before_month_seiri_array[1].to_i,before_month_seiri_array[2].to_i)
+        last_month_seiri_array_data = Date.new(last_month_seiri_array[0].to_i,last_month_seiri_array[1].to_i,last_month_seiri_array[2].to_i)
+
+        @user_next_seiri = before_month_seiri_array_data - last_month_seiri_array_data
+
+        if @user_next_seiri.to_i.abs <= 25
+          @next_seiri = last_seiri + 28
+          if last_seiri_count.to_i > 0
+            @next_hairan = @next_seiri - ((28 - 14) - last_seiri_count.to_i)
+          else
+            @next_hairan = @next_seiri - ((28 - 14) - 5)
+          end
+        else
+          @next_seiri = last_seiri + @user_next_seiri.to_i.abs
+          if last_seiri_count.to_i > 0
+            @next_hairan = @next_seiri - ((@user_next_seiri.to_i.abs - 14) - last_seiri_count.to_i)
+          else
+            @next_hairan = @next_seiri - ((@user_next_seiri.to_i.abs- 14) - 5)
+          end
+        end
+
+      end
+
+      if current_user.status
+        @status = current_user.status
+      else
+        @status = current_user.build_status
+      end
+      @status.update(next_seiri: @next_seiri, next_hairan: @next_hairan, ninsin_possibility:"", uranai:"", notice:"")
+
+    end
   end
 
 
