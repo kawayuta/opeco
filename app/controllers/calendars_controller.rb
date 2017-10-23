@@ -104,7 +104,7 @@ class CalendarsController < ApplicationController
       end
       respond_to do |format|
         if @calendar.save
-          format.html { redirect_to calendars_path, notice: '今日のデータを更新しました。' }
+          format.html { redirect_to calendars_path, notice: '今日のデータを登録しました。' }
           format.json { render :show, status: :created, location: @calendar }
         else
           format.html { render :new }
@@ -133,7 +133,7 @@ class CalendarsController < ApplicationController
   def destroy
     @calendar.destroy
     respond_to do |format|
-      format.html { redirect_to calendars_url, notice: 'Calendar was successfully destroyed.' }
+      format.html { redirect_to calendars_url, notice: '今日のデータを削除しました' }
       format.json { head :no_content }
     end
   end
