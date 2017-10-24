@@ -179,12 +179,20 @@
                     <div class="what_is_day"><%= day %>日</div>
                 <% end%>
 
+                <% if @data.condition_type == 1 %>
+                    <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
+                <% else %>
+                    <div class="card_icon_null"></div>
+                <% end%>
+
                 <% if @data.feel_type == 1 %>
-                    <div class="card_icon_feel_happy"><i class="fa fa-smile-o aria-hidden="true"></i>HAPPY</div>
+                    <div class="card_icon_feel_happy"><i class="fa fa-smile-o" aria-hidden="true"></i>HAPPY</div>
                 <% elsif @data.feel_type == 2 %>
                     <div class="card_icon_feel_soso"><i class="fa fa-smile-o" aria-hidden="true"></i>SOSO</div>
                 <% elsif @data.feel_type == 3 %>
                     <div class="card_icon_feel_bad"><i class="fa fa-smile-o" aria-hidden="true"></i>BAD</div>
+                <% else %>
+                    <div class="card_icon_null"></div>
                 <% end%>
 
                 <% if @data.sex_type == 1 %>
@@ -195,10 +203,8 @@
                     <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊外射)</div>
                 <% elsif @data.sex_type == 4 %>
                     <div class="card_icon_sex"><i class="fa fa-heartbeat" aria-hidden="true"></i>SEX(未避妊中射)</div>
-                <% end%>
-
-                <% if @data.condition_type == 1 %>
-                    <div class="card_icon_seiri"><i class="fa fa-tint" aria-hidden="true"></i>生理・出血</div>
+                <% else %>
+                    <div class="card_icon_null"></div>
                 <% end%>
 
                 <% if @my_status.next_seiri.present? == true && @my_status.next_seiri.strftime("%Y-%m-%d") == "#{@show_date}-#{day}".to_time.strftime("%Y-%m-%d") %>

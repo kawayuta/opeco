@@ -502,6 +502,22 @@ header ul li {
     margin-bottom: 13px;
 }
 
+
+.card_icon_null {
+    width:90%;
+    height:25px;
+    margin:0 auto;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    color:#FFF;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+
 .card_icon_sex {
     background-color: #FC7BA2;
     width:90%;

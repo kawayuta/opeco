@@ -81,7 +81,6 @@ class CalendarsController < ApplicationController
   # GET /calendars/1.json
   def show
 
-    puts @calendar.feel_type
   end
 
   # GET /calendars/new
