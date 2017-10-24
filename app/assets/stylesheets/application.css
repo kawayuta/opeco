@@ -642,15 +642,31 @@ header ul li {
     margin-top:20px;
 }
 
-#today_status_check li {
-    width:175px;
+#today_status_check li:nth-child(1) {
+    width:225.5px;
     height:60px;
     float: left;
     margin-left:11.5px;
     padding:0;
 }
-#today_status_check li input[type=checkbox] {
-    width:175px;
+
+
+#today_status_check li:nth-child(2) {
+    width:125.5px;
+    height:60px;
+    float: left;
+    margin-left:11.5px;
+    padding:0;
+}
+
+#today_status_check li:nth-child(1) input[type=checkbox] {
+    width:225.5px;
+    height:60px;
+    opacity: 0;
+}
+
+#today_status_check li:nth-child(2) input[type=checkbox] {
+    width:125.5px;
     height:60px;
     opacity: 0;
 }
@@ -658,7 +674,7 @@ header ul li {
 #today_status_check li input[type=checkbox]:checked + label.seiri_check_label {
     position: relative;
     top:-60px;
-    width:175.5px;
+    width:225.5px;
     height:60px;
     background-color: #F26574;
     border-radius: 10px;
@@ -669,7 +685,7 @@ header ul li {
 .seiri_check_label {
     position: relative;
     top:-60px;
-    width:175.5px;
+    width:225.5px;
     height:60px;
     background-color: #FFF;
     border-radius: 10px;
@@ -695,7 +711,7 @@ header ul li {
 #today_status_check li input[type=checkbox]:checked + label.sex_check_label {
     position: relative;
     top:-60px;
-    width:175.5px;
+    width:125.5px;
     height:60px;
     background-color: #FC7BA2;
     border-radius: 10px;
@@ -706,7 +722,7 @@ header ul li {
 .sex_check_label {
     position: relative;
     top:-60px;
-    width:175.5px;
+    width:125.5px;
     height:60px;
     background-color: #FFF;
     border-radius: 10px;
