@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20171022092542) do
 
   create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
+    t.boolean "seiri_period", default: false, null: false
+    t.timestamp "seiri_period_start"
+    t.timestamp "seiri_period_end"
     t.timestamp "next_seiri"
     t.timestamp "next_hairan"
     t.string "ninsin_possibility"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20171022092542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
-    t.string "viewname"
+    t.string "viewname", default: "名無し"
     t.string "image"
     t.integer "gender"
     t.string "birthday"

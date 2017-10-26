@@ -1,33 +1,26 @@
 <%= form_with(model: calendar, local: true, id: "today_data") do |form| %>
-  <% if calendar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
+    <% if calendar.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
 
-      <ul>
-      <% calendar.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% calendar.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <h3 class="form_title">生理状況</h3>
 
     <ul id="today_status_check" class="clearfix">
-      <li class="status_input">
-          <% if current_user.status.present? && current_user.status.seiri_period == false %>
-                  <%= link_to  seiri_kikan_calendar_path(current_user), remote: true, method: :put, class:"seiri_check_label"  do %>
-                  <span><i class="fa fa-tint" aria-hidden="true"><span>生理始まった</span></i></span>
-              <% end %>
-          <% elsif current_user.status.present? == false %>
-            <%= link_to  seiri_kikan_calendar_path(current_user), remote: true, method: :put, class:"seiri_check_label"  do %>
-                <span><i class="fa fa-tint" aria-hidden="true"><span>生理始まった</span></i></span>
-            <% end %>
-          <% else %>
-              <%= link_to  seiri_kikan_calendar_path(current_user), remote: true, method: :put, class:"seiri_check_label_off"  do %>
-                  <span><i class="fa fa-tint" aria-hidden="true"><span>生理終わった</span></i></span>
-                <% end %>
-          <% end %>
+      <li>
+        <% if @calendar.condition_type == 1 %>
+            <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type", checked:"checked" %>
+        <% else %>
+            <%= form.check_box :condition_type, id:"seiri_check", class:"condition_type" %>
+        <% end %>
+        <label for="seiri_check" class="seiri_check_label"><i class="fa fa-tint" aria-hidden="true"></i>生理 ・ 出血</label>
       </li>
 
       <li>

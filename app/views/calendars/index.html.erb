@@ -83,8 +83,8 @@
   </div>
 
    <% unless current_user.gender == 'male' %>
-    <h3 class="form_title">今日の気分は？</h3>
-    <%= render 'form', calendar: @calendar %>
+
+      <%= render 'form', calendar: @calendar %>
   <% else %>
   <% end %>
 </div>

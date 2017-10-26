@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  resources :calendars
+  resources :calendars do
+    member do
+      put 'seiri_kikan'
+    end
+  end
   resources :shares do
     member do
       put 'change'
     end
   end
+
+
   devise_for :users, :controllers => {
       :registrations => 'users/registrations',
       :sessions => 'users/sessions'

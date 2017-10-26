@@ -70,6 +70,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:possibility, :ovulation, :menses)
+      params.require(:status).permit(:possibility, :ovulation, :menses, :seiri_period, :seiri_period_start, :seiri_period_end))
     end
 end

@@ -1,18 +1,22 @@
 class CalendarsController < ApplicationController
   require 'date'
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
-  after_action :database_status_update, only: [:create, :edit, :update, :destroy]
+  after_action :database_status_update, only: [:seiri_kikan, :create, :edit, :update, :destroy]
   before_action :today_check, only: [:new]
   before_action :set_calendar_ym, only: [:index]
   before_action :authenticate_user!
 
   # GET /calendars
   # GET /calendars.json
-  def index
 
+
+
+
+  def index
     @now = Time.current
     @today = Date.today
     @set_calendar_ym = (set_calendar_ym)
+
 
     if @set_calendar_ym[:month] == "0"
       @show_month = (@set_calendar_ym[:month] = "12").to_i.abs
@@ -55,6 +59,8 @@ class CalendarsController < ApplicationController
       @my_status = current_user.status
     end
 
+
+
     if @my_status.present? == true
 
       @next_hairan_schedule = []
@@ -96,14 +102,13 @@ class CalendarsController < ApplicationController
   # POST /calendars.json
   def create
     @now = Time.current
-
       @calendar = current_user.calendar.new(calendar_params)
       unless @calendar.ymd.present?
         @calendar.ymd = @now.strftime("%Y-%m-%d")
       end
       respond_to do |format|
         if @calendar.save
-          format.html { redirect_to calendars_path, notice: '今日のデータを登録しました。' }
+          format.html { redirect_to calendars_path }
           format.json { render :show, status: :created, location: @calendar }
         else
           format.html { render :new }
@@ -118,7 +123,7 @@ class CalendarsController < ApplicationController
   def update
     respond_to do |format|
       if @calendar.update(calendar_params)
-        format.html { redirect_to calendars_path, notice: '今日のデータを更新しました。' }
+        format.html { redirect_to calendars_path(@calendar) }
         format.json { render :show, status: :ok, location: @calendar }
       else
         format.html { render :edit }
@@ -135,6 +140,72 @@ class CalendarsController < ApplicationController
       format.html { redirect_to calendars_url, notice: '今日のデータを削除しました' }
       format.json { head :no_content }
     end
+  end
+
+
+
+  def seiri_kikan
+    now = Time.current
+    if current_user.status
+      @status = current_user.status
+    else
+      @status = current_user.build_status
+      @status.save
+    end
+
+    if @status.seiri_period_start.present? == false && @status.seiri_period_end.present? == false
+
+      respond_to do |format|
+        if @status.update(seiri_period_start: now.strftime('%Y-%m-%d'), seiri_period: true)
+
+          if current_user.calendar.find_by(ymd: now.strftime('%Y-%m-%d')).present?
+            @data = current_user.calendar.find_by(ymd: now.strftime('%Y-%m-%d'))
+          else
+            @data = current_user.calendar.create(ymd: now.strftime('%Y-%m-%d'))
+          end
+          @data.update(condition_type: 1)
+          format.html { redirect_to calendars_path, notice: '生理期間が始まりました。' }
+          format.json { render :index, status: :ok, location: @share }
+        else
+          format.html { render :edit }
+          format.json { render json: @status.errors, status: :unprocessable_entity }
+        end
+      end
+
+    elsif @status.seiri_period_start.nil? == false && @status.seiri_period_end.nil? == true
+
+      respond_to do |format|
+        if @status.update(seiri_period_end: now.strftime('%Y-%m-%d'))
+
+          if @calendar_seiri_start_day = current_user.calendar.find_by(ymd:@status.seiri_period_start.strftime('%Y-%m-%d')).present?
+            current_user.calendar.update(condition_type:1)
+          else
+            current_user.calendar.create(condition_type:1, ymd:@status.seiri_period_start.strftime('%Y-%m-%d'))
+          end
+
+          data = @status.seiri_period_start.to_date - @status.seiri_period_end.to_date
+          1.upto(data.abs.to_i) do |i|
+            new = @status.seiri_period_start.to_date + i
+            hiduke = new.strftime('%Y-%m-%d')
+            if @calendar_seiri = current_user.calendar.find_by(ymd:hiduke).present?
+              current_user.calendar.update(condition_type:1)
+            else
+              current_user.calendar.create(condition_type:1, ymd:hiduke)
+            end
+          end
+
+
+          @status.update(seiri_period_start: nil, seiri_period_end: nil, seiri_period: false)
+
+          format.html { redirect_to calendars_path, notice: '生理期間が終わりました。' }
+          format.json { render :index, status: :ok, location: @share }
+        else
+          format.html { render :edit }
+          format.json { render json: @status.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
   end
 
   private
@@ -202,6 +273,7 @@ class CalendarsController < ApplicationController
           else
             @next_hairan = @next_seiri - ((28 - 14) - 5)
           end
+
         else
           @next_seiri = last_seiri + @user_next_seiri.to_i.abs
           if last_seiri_count.to_i > 0
@@ -218,6 +290,16 @@ class CalendarsController < ApplicationController
       else
         @status = current_user.build_status
       end
+
+      @today = Date.today
+      hairan_count_nissu = @today - @next_hairan
+      seiri_count_nissu = @today - @next_seiri
+
+      sabun = hairan_count_nissu.abs.to_i - seiri_count_nissu.abs.to_i
+      if sabun < 14
+        @next_seiri = @next_hairan + 14
+      end
+
       @status.update(next_seiri: @next_seiri, next_hairan: @next_hairan, ninsin_possibility:"", uranai:"", notice:"")
 
     end
